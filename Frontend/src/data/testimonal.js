@@ -1,4 +1,4 @@
-const testimonal = [
+const testimonial = [
   {
     "name": "Sarah Williams",
     "role": "Freelance Designer",
@@ -70,4 +70,4 @@ const testimonal = [
     "testimonial": "I’ve tried many tools, but this one understands context better than any other AI email generator."
   }
 ]
-export default  testimonal; 
+export default  testimonial; 
