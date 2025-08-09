@@ -47,13 +47,14 @@ const Hero = () => {
           </span>
         </div>
 
-        <h1 className="text-4xl md:text-6xl lg:text-7xl hero_header text-white">
-          Generate Emails Instantly <br />
-          with{' '}
-          <span className="text-9xl AI font-bold animate-text bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 bg-clip-text text-transparent">
-            AI
-          </span>
-        </h1>
+       <h1 className="text-4xl md:text-6xl lg:text-7xl hero_header font-bold bg-gradient-to-b from-white to-[#B372CF] bg-clip-text text-transparent">
+  Generate Emails Instantly <br />
+  with{" "}
+  <span className="text-9xl AI font-bold bg-gradient-to-b from-white to-[#B372CF] bg-clip-text text-transparent">
+    AI
+  </span>
+</h1>
+
 
         <p className="mt-4 text-xs hero_content text-gray-300">
           Write professional, personalized emails in seconds — no typing needed.
