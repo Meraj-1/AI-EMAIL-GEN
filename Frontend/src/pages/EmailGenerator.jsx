@@ -13,7 +13,7 @@ const EmailGenerator = () => {
     setLoading(true);
     setGeneratedEmail("");
     try {
-      const res = await axios.post("http://localhost:5000/generate-email", { prompt });
+      const res = await axios.post("https://ai-email-gen-three.vercel.app/generate-email", { prompt });
       setGeneratedEmail(res.data.generatedEmail);
     } catch (error) {
       alert("❌ Error generating email");
