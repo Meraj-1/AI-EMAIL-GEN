@@ -1,17 +1,25 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import EmailGenerator from "./pages/EmailGenerator.jsx"
-import Home from './pages/Home.jsx'
+import React from "react";
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+
+import Home from "./pages/Home.jsx";
+import EmailGenerator from "./pages/EmailGenerator.jsx";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />,
+  },
+  {
+    path: "/email-generator",
+    element: <EmailGenerator />,
+  },
+]);
 
 function App() {
-
-  return (
-   <div className='z-10'>
-    <Home/>
-    {/* <EmailGenerator/> */}
-   </div>
-  )
+  return <RouterProvider router={router} />;
 }
 
-export default App
+export default App;
