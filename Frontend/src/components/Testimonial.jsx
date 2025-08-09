@@ -13,17 +13,17 @@ const Testimonial = () => {
         productivity, and communicate with confidence.
       </p>
 
-      <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-10 grid-cols-2 md:grid-cols-4 lg:grid-cols-5">
         {testimonial.map((t, index) => (
           <div
             key={index}
-            className="rounded-xl overflow-hidden shadow-lg hover:shadow-purple-500/20 transition-transform duration-300 hover:scale-105 flex flex-col"
+            className="overflow-hidden shadow-lg hover:shadow-purple-500/20 transition-transform duration-300 hover:scale-105 flex flex-col"
           >
             {/* Image */}
             <img
               src={t.image}
               alt={t.name}
-              className="w-full h-48 object-cover"
+              className="w-full h-full  object-cover"
             />
 
             {/* Content */}
