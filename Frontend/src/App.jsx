@@ -3,9 +3,11 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-
+import Service from "./pages/Service.jsx";
 import Home from "./pages/Home.jsx";
 import EmailGenerator from "./pages/EmailGenerator.jsx";
+import Contact from "./pages/Contact.jsx";
+import About from "./pages/About.jsx";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +18,18 @@ const router = createBrowserRouter([
     path: "/email-generator",
     element: <EmailGenerator />,
   },
+  {
+    path: "/service",
+    element: <Service />,
+  },
+  {
+    path: "/contact",
+    element: <Contact/>
+  },
+  {
+    path: "/about",
+    element: <About/>
+  }
 ]);
 
 function App() {

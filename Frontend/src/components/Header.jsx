@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Header = () => {
   return (
@@ -8,9 +9,9 @@ const Header = () => {
         </div>
         <div>
         <ul className='md:flex  space-x-4 text-white'>
-            <li className='cursor-pointer'>Service</li>
-            <li className='cursor-pointer'>About</li>
-            <li className='cursor-pointer'>Contact</li>
+           <Link to='/service'> <li className='cursor-pointer'>Service</li></Link>
+           <Link to='/about'> <li className='cursor-pointer'>About</li> </Link>
+            <Link to='/contact'><li className='cursor-pointer'>Contact</li></Link>
             {/* <li>Login</li> */}
         </ul>
         </div>
