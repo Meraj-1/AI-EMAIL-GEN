@@ -1,5 +1,5 @@
 import React from "react";
-import testimonal from "../data/testimonal";
+import testimonial from "../data/testimonial";
 import { FaStar, FaRegStar } from "react-icons/fa";
 
 const Testimonial = () => {
@@ -14,7 +14,7 @@ const Testimonial = () => {
       </p>
 
       <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
-        {testimonal.map((t, index) => (
+        {testimonial.map((t, index) => (
           <div
             key={index}
             className="rounded-xl overflow-hidden shadow-lg hover:shadow-purple-500/20 transition-transform duration-300 hover:scale-105 flex flex-col"
