@@ -1,8 +1,8 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import assets from '../assets/assets'
-import Header from './Header'
-import LightRays from '../animations/LightRays'
+import React from "react";
+import { Link } from "react-router-dom";
+import assets from "../assets/assets";
+import Header from "./Header";
+import LightRays from "../animations/LightRays";
 
 const Hero = () => {
   return (
@@ -35,36 +35,33 @@ const Hero = () => {
       </div>
 
       {/* Hero content */}
-      <div className="flex flex-col text-center h-full lg:mt-40 items-center z-30 relative">
+      <div className="flex px-8 flex-col text-center md:h-full mt-30 lg:mt-40 items-center z-30 relative">
         <div className="mb-6 p-3 flex justify-center">
           <span className="border flex text-wrap cursor-pointer border-gray-400 p-1 rounded-full">
             <span className="bg-[#9855FF] flex items-center text-xs font-semibold text-black border px-2 py-0.5 rounded-full">
-              new
+              <h1 className="flex items-center">new</h1>
             </span>
             <span className="text-[#9855FF] flex items-center font-bold text-xs px-2">
               Latest integration just arrived
             </span>
           </span>
         </div>
-
-       <h1 className="text-4xl md:text-6xl lg:text-7xl hero_header font-bold bg-gradient-to-b from-white to-[#B372CF] bg-clip-text text-transparent">
-  Generate Emails Instantly <br />
-  with{" "}
-  <span className="text-9xl AI font-bold bg-gradient-to-b from-white to-[#B372CF] bg-clip-text text-transparent">
-    AI
-  </span>
-</h1>
-
-
+        <h1 className="text-5xl md:text-6xl lg:text-7xl hero_header font-bold bg-gradient-to-b from-white to-[#B372CF] bg-clip-text text-transparent">
+          Generate Emails Instantly <br />
+          with{" "}
+          <span className="md:text-9xl text-6xl AI font-bold bg-gradient-to-b from-white to-[#B372CF] bg-clip-text text-transparent">
+            AI
+          </span>
+        </h1>
         <p className="mt-4 text-xs hero_content text-gray-300">
           Write professional, personalized emails in seconds — no typing needed.
         </p>
-        <button className='bg-[#9855FF] hover:bg-purple-600 cursor-pointer focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mt-4'>
-          <Link to="/email-generator">Generate it Now</Link>  
+        <button className="bg-[#9855FF] hover:bg-purple-600 cursor-pointer focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mt-4">
+          <Link to="/email-generator">Generate it Now</Link>
         </button>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Hero;

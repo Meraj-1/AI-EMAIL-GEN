@@ -4,12 +4,12 @@ import assets from "../assets/assets";
 const Footer = () => {
     return (
         <div className="bg-black text-white ">
-            <div className="flex flex-row justify-between px-20 py-10 ">
+            <div className="flex md:flex-row flex-col  gap-10 md:justify-between md:px-20 px-10 py-10 ">
                 <div>
                     <img src={assets.logokit} alt="" />
                     {/* <h1 className='text-white text-2xl font-bold'>Serendale</h1> */}
                 </div>
-                <div className="grid grid-cols-4  md:grid-cols-4 gap-30 mt-4">
+                <div className="grid grid-cols-1  md:grid-cols-4 gap-30 mt-4">
                     <div className="">
                         <p className="mb-9">Product</p>
                         <ul className="space-y-3 text-gray-400 text-sm">
