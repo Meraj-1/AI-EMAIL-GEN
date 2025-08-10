@@ -1,9 +1,13 @@
-import React from 'react'
-import WorkInpro from '../components/WorkInpro'
-
+import React from "react";
+import WorkInpro from "../components/WorkInpro";
+import Headers from "../components/Header";
 const Contact = () => {
   return (
-    <section className="bg-black h-screen text-white py-16 px-6 md:px-20" id="contact">
+    <section
+      className="bg-black h-screen text-white py-16 px-6 md:px-20"
+      id="contact"
+    >
+      {/* <Headers/> */}
       <div className="max-w-6xl mx-auto">
         {/* Heading */}
         <div className="text-center mb-12">
@@ -11,8 +15,8 @@ const Contact = () => {
             Get in Touch
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Have questions or suggestions about our AI Email Generator?  
-            We’d love to hear from you. Fill out the form below or reach us directly.
+            Have questions or suggestions about our AI Email Generator? We’d
+            love to hear from you. Fill out the form below or reach us directly.
           </p>
         </div>
 
@@ -36,7 +40,9 @@ const Contact = () => {
               />
             </div>
             <div className="mb-6">
-              <label className="block mb-2 text-sm font-semibold">Message</label>
+              <label className="block mb-2 text-sm font-semibold">
+                Message
+              </label>
               <textarea
                 placeholder="Write your message..."
                 rows="5"
@@ -59,7 +65,8 @@ const Contact = () => {
             </p>
             <div className="space-y-4">
               <p>
-                📧 <span className="text-purple-400">belalraza158@gmail.com</span>
+                📧{" "}
+                <span className="text-purple-400">belalraza158@gmail.com</span>
               </p>
               <p>
                 📞 <span className="text-purple-400">+91 73041 85760</span>
@@ -68,14 +75,23 @@ const Contact = () => {
                 📍 <span className="text-purple-400">Mumbai, India</span>
               </p>
             </div>
-            <div className="h-48  rounded-lg flex items-center justify-center text-gray-500">
-              Map Placeholder
+            <div className="h-80  flex flex-wrap rounded-lg overflow-hidden">
+              <iframe
+                title="map"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241317.11609962012!2d72.74109834404288!3d19.08219783958096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z!5e0!3m2!1sen!2sin!4v1691234567890"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
             </div>
           </div>
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Contact
+export default Contact;
