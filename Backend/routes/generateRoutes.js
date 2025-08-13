@@ -23,10 +23,10 @@ router.post('/', async (req, res) => {
      const content = response.data.choices[0].message.content;
      res.json({generatedEmail: content});
     } catch (error) {
-        console.log("Groq Api Error:", error.message);
-        res.status(500)
-       .json({error: 'Failed to generate Email'});
-    }
+  console.error("Groq Api Error:", error.response?.data || error.message);
+  res.status(500).json({ error: 'Failed to generate Email' });
+}
+
 });
 
 module.exports = router;

@@ -29,7 +29,7 @@ const Header = () => {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className='md:hidden bg-black border-t border-gray-700'>
+        <div className='md: h-full bg-black border-t border-gray-700'>
           <ul className='flex flex-col space-y-4 px-6 py-4'>
             <Link to='/service' onClick={() => setMenuOpen(false)}>
               <li className='cursor-pointer'>Service</li>
