@@ -1,50 +1,98 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { Menu, X } from 'lucide-react' // you can use heroicons or any icon set
+import React, { useState } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { Menu, X } from "lucide-react";
 
 const Header = () => {
-  const [menuOpen, setMenuOpen] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const navLinkClass =
+    "relative text-sm text-gray-300 hover:text-white transition";
 
   return (
-    <div className='bg-black text-white'>
-      <div className='flex justify-between items-center px-6 py-4 md:px-20'>
-        {/* Logo */}
-        <h1 className='text-2xl font-bold'>Serendale</h1>
+    <header className="fixed top-0 left-0 w-full z-50">
+      <div className="backdrop-blur-xl bg-black/60 border-b border-white/10">
+        <div className="flex items-center justify-between px-6 py-4 md:px-20">
+          
+          {/* Logo */}
+          <Link to="/" className="text-2xl font-bold tracking-wide">
+            <span className="text-white">Seren</span>
+            <span className="text-purple-500">dale</span>
+          </Link>
 
-        {/* Desktop Menu */}
-        <ul className='hidden md:flex space-x-6'>
-          <Link to='/service'><li className='cursor-pointer'>Service</li></Link>
-          <Link to='/about'><li className='cursor-pointer'>About</li></Link>
-          <Link to='/contact'><li className='cursor-pointer'>Contact</li></Link>
-        </ul>
+          {/* Desktop Menu */}
+          <nav className="hidden md:flex items-center gap-8">
+            <NavLink to="/service" className={navLinkClass}>
+              Service
+            </NavLink>
+            <NavLink to="/about" className={navLinkClass}>
+              About
+            </NavLink>
+            <NavLink to="/contact" className={navLinkClass}>
+              Contact
+            </NavLink>
 
-        {/* Mobile Menu Button */}
-        <button
-          className='md:hidden'
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          {menuOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
-      </div>
+            {/* CTA */}
+            <Link
+              to="/contact"
+              className="ml-4 px-4 py-2 rounded-full text-sm font-semibold
+                         bg-gradient-to-r from-purple-500 to-indigo-600
+                         hover:opacity-90 transition shadow-lg"
+            >
+              Get Started
+            </Link>
+          </nav>
 
-      {/* Mobile Menu */}
-      {menuOpen && (
-        <div className='md: h-full bg-black border-t border-gray-700'>
-          <ul className='flex flex-col space-y-4 px-6 py-4'>
-            <Link to='/service' onClick={() => setMenuOpen(false)}>
-              <li className='cursor-pointer'>Service</li>
-            </Link>
-            <Link to='/about' onClick={() => setMenuOpen(false)}>
-              <li className='cursor-pointer'>About</li>
-            </Link>
-            <Link to='/contact' onClick={() => setMenuOpen(false)}>
-              <li className='cursor-pointer'>Contact</li>
-            </Link>
-          </ul>
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden text-white"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            {menuOpen ? <X size={26} /> : <Menu size={26} />}
+          </button>
         </div>
-      )}
-    </div>
-  )
-}
 
-export default Header
+        {/* Mobile Menu */}
+        <div
+          className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out
+          ${menuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}`}
+        >
+          <nav className="flex flex-col px-6 py-6 space-y-6 bg-black/80">
+            <NavLink
+              to="/service"
+              onClick={() => setMenuOpen(false)}
+              className="text-gray-300 hover:text-white text-lg"
+            >
+              Service
+            </NavLink>
+            <NavLink
+              to="/about"
+              onClick={() => setMenuOpen(false)}
+              className="text-gray-300 hover:text-white text-lg"
+            >
+              About
+            </NavLink>
+            <NavLink
+              to="/contact"
+              onClick={() => setMenuOpen(false)}
+              className="text-gray-300 hover:text-white text-lg"
+            >
+              Contact
+            </NavLink>
+
+            <Link
+              to="/contact"
+              onClick={() => setMenuOpen(false)}
+              className="mt-4 inline-block text-center px-5 py-3 rounded-full
+                         bg-gradient-to-r from-purple-500 to-indigo-600
+                         font-semibold"
+            >
+              Get Started
+            </Link>
+          </nav>
+        </div>
+      </div>
+    </header>
+  );
+};
+
+export default Header;
