@@ -2,107 +2,111 @@ import React from "react";
 import assets from "../assets/assets";
 
 const Footer = () => {
-    return (
-        <div className="bg-black text-white ">
-            <div className="flex md:flex-row flex-col  gap-10 md:justify-between md:px-20 px-10 py-10 ">
-                <div>
-                    <img src={assets.logokit} alt="" />
-                    {/* <h1 className='text-white text-2xl font-bold'>Serendale</h1> */}
-                </div>
-                <div className="grid grid-cols-1  md:grid-cols-4 gap-30 mt-4">
-                    <div className="">
-                        <p className="mb-9">Product</p>
-                        <ul className="space-y-3 text-gray-400 text-sm">
-                            <li>
-                                {" "}
-                                <a href="">Features</a>
-                            </li>
-                            <li>
-                                {" "}
-                                <a href="">Integration</a>
-                            </li>
-                            <li>
-                                {" "}
-                                <a href="">Updates</a>
-                            </li>
-                            <li>
-                                {" "}
-                                <a href="">FAQ</a>
-                            </li>
-                            <li>
-                                {" "}
-                                <a href="">Pricing</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div>
-                        <p className="mb-9">Company</p>
-                        <ul className="space-y-2 text-gray-400 text-sm">
-                            <li>
-                                {" "}
-                                <a href="">About</a>
-                            </li>
-                            <li>
-                                {" "}
-                                <a href="">Blog</a>
-                            </li>
-                            <li>
-                                {" "}
-                                <a href="">Careers</a>{" "}
-                            </li>
-                            <li>
-                                <a href="">Manifesto</a>
-                            </li>
-                            <li>
-                                <a href="">Press</a>
-                            </li>
-                            <li>
-                                {" "}
-                                <a href="">Contract</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div>
-                        <p className="mb-9">Resources</p>
-                        <ul className="space-y-2 text-gray-400 text-sm">
-                            <li>
-                                {" "}
-                                <a href="">Exaples</a>
-                            </li>
-                            <li>
-                                {" "}
-                                <a href="">Community</a>
-                            </li>
-                            <li>
-                                <a href="">Guides</a>
-                            </li>
-                            <li>
-                                <a href="">Docs</a>
-                            </li>
-                            <li>
-                                {" "}
-                                <a href="">Press</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div>
-                        <p className="mb-9">Legal</p>
-                        <ul className="space-y-2 text-gray-400 text-sm">
-                            <li>
-                                <a href="">privacy</a>
-                            </li>
-                            <li>
-                                <a href="">Terms</a>
-                            </li>
-                            <li>
-                                <a href="">Security</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+  return (
+    <footer className="bg-black text-white border-t border-white/10">
+      <div className="max-w-7xl mx-auto px-6 md:px-20 py-16">
+
+        {/* Top Section */}
+        <div className="flex flex-col md:flex-row gap-14 md:justify-between">
+
+          {/* Logo */}
+          <div className="max-w-sm">
+            <img src={assets.logokit} alt="Serendale Logo" className="mb-4 w-40" />
+            <p className="text-sm text-gray-400 leading-relaxed">
+              Build, generate, and automate professional emails using AI.
+              Designed for teams and individuals who value speed and quality.
+            </p>
+          </div>
+
+          {/* Links */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-12">
+            
+            <div>
+              <p className="mb-6 text-sm font-semibold tracking-wide text-white">
+                Product
+              </p>
+              <ul className="space-y-3 text-gray-400 text-sm">
+                {["Features", "Integration", "Updates", "FAQ", "Pricing"].map(
+                  (item) => (
+                    <li key={item}>
+                      <a href="#" className="hover:text-white transition">
+                        {item}
+                      </a>
+                    </li>
+                  )
+                )}
+              </ul>
             </div>
+
+            <div>
+              <p className="mb-6 text-sm font-semibold tracking-wide text-white">
+                Company
+              </p>
+              <ul className="space-y-3 text-gray-400 text-sm">
+                {[
+                  "About",
+                  "Blog",
+                  "Careers",
+                  "Manifesto",
+                  "Press",
+                  "Contact",
+                ].map((item) => (
+                  <li key={item}>
+                    <a href="#" className="hover:text-white transition">
+                      {item}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <p className="mb-6 text-sm font-semibold tracking-wide text-white">
+                Resources
+              </p>
+              <ul className="space-y-3 text-gray-400 text-sm">
+                {["Examples", "Community", "Guides", "Docs", "Press"].map(
+                  (item) => (
+                    <li key={item}>
+                      <a href="#" className="hover:text-white transition">
+                        {item}
+                      </a>
+                    </li>
+                  )
+                )}
+              </ul>
+            </div>
+
+            <div>
+              <p className="mb-6 text-sm font-semibold tracking-wide text-white">
+                Legal
+              </p>
+              <ul className="space-y-3 text-gray-400 text-sm">
+                {["Privacy", "Terms", "Security"].map((item) => (
+                  <li key={item}>
+                    <a href="#" className="hover:text-white transition">
+                      {item}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+          </div>
         </div>
-    );
+
+        {/* Bottom Bar */}
+        <div className="mt-14 pt-6 border-t border-white/10 flex flex-col md:flex-row
+                        items-center justify-between gap-4 text-sm text-gray-500">
+          <p>© {new Date().getFullYear()} Serendale. All rights reserved.</p>
+          <p className="text-gray-400">
+            Built with ❤️ using AI
+          </p>
+        </div>
+
+      </div>
+    </footer>
+  );
 };
 
 export default Footer;
