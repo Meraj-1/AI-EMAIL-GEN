@@ -7,6 +7,8 @@ import ProblemSolution from '../components/ProblemSolution'
 import HowItWorks from '../components/HowItWorks'
 import Examples from '../components/Examples'
 import UseCases from '../components/UseCases'
+import Features from '../components/Features'
+import Pricing from '../components/Pricing'
 
 const Home = () => {
   return (
@@ -18,6 +20,8 @@ const Home = () => {
         <EmailGenerator/>
         <Examples/>
         <UseCases/>
+        <Features/>
+        <Pricing/>
         <Testimonial/>
         <Footer/>
     </div>
