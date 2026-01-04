@@ -4,7 +4,7 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import Testimonial from '../components/Testimonial'
 import ProblemSolution from '../components/ProblemSolution'
-
+import HowItWorks from '../components/HowItWorks'
 
 const Home = () => {
   return (
@@ -12,6 +12,8 @@ const Home = () => {
         {/* <Header/> */}
         <Hero/>
         <ProblemSolution/>
+        <HowItWorks/>
+        <EmailGenerator/>
         <Testimonial/>
         <Footer/>
     </div>
