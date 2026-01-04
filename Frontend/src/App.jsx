@@ -5,7 +5,7 @@ import Header from "./components/Header";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
-import EmailGeneratorPage from "./pages/EmailGeneratorPage";
+import EmailGenerator from "./pages/EmailGenerator";
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/email-generator" element={<EmailGeneratorPage />} />
+          <Route path="/email-generator" element={<EmailGenerator/>} />
           <Route path="*" element={<div className="text-center mt-20 text-white">404 - Page Not Found</div>} />
         </Routes>
       </main>
