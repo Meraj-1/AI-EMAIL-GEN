@@ -17,7 +17,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/email-generator" element={<EmailGenerator/>} />
-          <Route path="*" element={<div className="text-center mt-20 text-white">404 - Page Not Found</div>} />
+          <Route path="*" element={<div className="text-center mt-20 text-white"></div>} />
         </Routes>
       </main>
     </Router>
