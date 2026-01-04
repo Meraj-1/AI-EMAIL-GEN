@@ -9,6 +9,8 @@ import Examples from '../components/Examples'
 import UseCases from '../components/UseCases'
 import Features from '../components/Features'
 import Pricing from '../components/Pricing'
+import Faq from '../components/Faq'
+import Cta from '../components/Cta'
 
 const Home = () => {
   return (
@@ -22,6 +24,8 @@ const Home = () => {
         <UseCases/>
         <Features/>
         <Pricing/>
+        <Faq/>
+        <Cta/>
         <Testimonial/>
         <Footer/>
     </div>
