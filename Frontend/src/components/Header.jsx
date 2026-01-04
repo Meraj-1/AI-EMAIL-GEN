@@ -1,12 +1,21 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const navLinkClass =
-    "relative text-sm text-gray-300 hover:text-white transition";
+  // Prevent background scroll when menu is open
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "auto";
+  }, [menuOpen]);
+
+  const navLinkClass = ({ isActive }) =>
+    `relative text-sm transition ${
+      isActive
+        ? "text-white after:absolute after:-bottom-1 after:left-0 after:w-full after:h-[2px] after:bg-purple-500"
+        : "text-gray-300 hover:text-white"
+    }`;
 
   return (
     <header className="fixed top-0 left-0 w-full z-50">
@@ -44,8 +53,9 @@ const Header = () => {
 
           {/* Mobile Menu Button */}
           <button
+            aria-label="Toggle menu"
             className="md:hidden text-white"
-            onClick={() => setMenuOpen(!menuOpen)}
+            onClick={() => setMenuOpen((prev) => !prev)}
           >
             {menuOpen ? <X size={26} /> : <Menu size={26} />}
           </button>
@@ -57,27 +67,20 @@ const Header = () => {
           ${menuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}`}
         >
           <nav className="flex flex-col px-6 py-6 space-y-6 bg-black/80">
-            <NavLink
-              to="/service"
-              onClick={() => setMenuOpen(false)}
-              className="text-gray-300 hover:text-white text-lg"
-            >
-              Service
-            </NavLink>
-            <NavLink
-              to="/about"
-              onClick={() => setMenuOpen(false)}
-              className="text-gray-300 hover:text-white text-lg"
-            >
-              About
-            </NavLink>
-            <NavLink
-              to="/contact"
-              onClick={() => setMenuOpen(false)}
-              className="text-gray-300 hover:text-white text-lg"
-            >
-              Contact
-            </NavLink>
+            {["service", "about", "contact"].map((item) => (
+              <NavLink
+                key={item}
+                to={`/${item}`}
+                onClick={() => setMenuOpen(false)}
+                className={({ isActive }) =>
+                  `text-lg transition ${
+                    isActive ? "text-white" : "text-gray-300 hover:text-white"
+                  }`
+                }
+              >
+                {item.charAt(0).toUpperCase() + item.slice(1)}
+              </NavLink>
+            ))}
 
             <Link
               to="/contact"
