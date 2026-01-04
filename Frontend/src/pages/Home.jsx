@@ -19,7 +19,7 @@ const Home = () => {
         <Hero/>
         <ProblemSolution/>
         <HowItWorks/>
-        <EmailGenerator/>
+        {/* <EmailGenerator/> */}
         <Examples/>
         <UseCases/>
         <Features/>
