@@ -3,6 +3,8 @@ import WorkInpro from '../components/WorkInpro'
 import OurStory from '../components/OurStory'
 import HowItWorks from '../components/HowItWorks'
 import HowWeWork from '../components/HowWeWork'
+import { Milestone } from 'lucide-react'
+import WhyChooseUs from '../components/WhyChooseUs'
 
 const About = () => {
   return (
@@ -12,7 +14,8 @@ const About = () => {
             <WorkInpro/>
             <OurStory/>
             <HowWeWork/>
-            
+            <Milestone/>
+            <WhyChooseUs/>
         </div>
     </div>
   )
