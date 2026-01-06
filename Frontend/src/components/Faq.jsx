@@ -1,3 +1,6 @@
+import { useState } from "react";
+import { FaChevronDown } from "react-icons/fa";
+
 const faqs = [
   {
     q: "Is this email generator free to use?",
@@ -26,6 +29,12 @@ const faqs = [
 ];
 
 const Faq = () => {
+  const [openIndex, setOpenIndex] = useState(null);
+
+  const toggleFaq = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
   return (
     <section className="py-32 bg-black text-white px-6">
       <div className="max-w-6xl mx-auto">
@@ -41,21 +50,46 @@ const Faq = () => {
           </p>
         </div>
 
-        {/* FAQ List */}
-        <div className="max-w-4xl mx-auto space-y-6">
-          {faqs.map((item, index) => (
-            <div
-              key={index}
-              className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition"
-            >
-              <h4 className="font-semibold text-lg mb-2">
-                ❓ {item.q}
-              </h4>
-              <p className="text-gray-300 leading-relaxed">
-                {item.a}
-              </p>
-            </div>
-          ))}
+        {/* FAQ Accordion */}
+        <div className="max-w-4xl mx-auto space-y-4">
+          {faqs.map((item, index) => {
+            const isOpen = openIndex === index;
+
+            return (
+              <div
+                key={index}
+                className="bg-white/5 border border-white/10 rounded-2xl overflow-hidden
+                           hover:border-purple-500/40 transition"
+              >
+                {/* Question */}
+                <button
+                  onClick={() => toggleFaq(index)}
+                  className="w-full flex justify-between items-center p-6 text-left"
+                >
+                  <h4 className="font-semibold text-lg">
+                    ❓ {item.q}
+                  </h4>
+
+                  <FaChevronDown
+                    className={`transition-transform duration-300 ${
+                      isOpen ? "rotate-180 text-purple-400" : "rotate-0"
+                    }`}
+                  />
+                </button>
+
+                {/* Answer */}
+                <div
+                  className={`px-6 overflow-hidden transition-all duration-300 ${
+                    isOpen ? "max-h-40 pb-6 opacity-100" : "max-h-0 opacity-0"
+                  }`}
+                >
+                  <p className="text-gray-300 leading-relaxed">
+                    {item.a}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
         </div>
 
         {/* Bottom CTA */}

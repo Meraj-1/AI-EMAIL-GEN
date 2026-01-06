@@ -1,78 +1,110 @@
-import { Link } from "react-router-dom";
+import {
+  FaEnvelope,
+  FaPhoneAlt,
+  FaMapMarkerAlt,
+} from "react-icons/fa";
 
 const Cta = () => {
   return (
-    <section className="relative py-32 text-white overflow-hidden">
+    <section className="relative py-32 px-6 text-white bg-black overflow-hidden">
 
-      {/* Background Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-600 via-indigo-600 to-blue-600"></div>
-
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/20"></div>
+      {/* Background Gradient Glow */}
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-600/10 via-indigo-600/10 to-blue-600/10"></div>
 
       {/* Content Wrapper */}
-      <div className="relative max-w-4xl mx-auto px-6 text-center">
+      <div className="relative max-w-6xl mx-auto">
 
-        {/* Badge */}
-        <div className="mb-6">
+        {/* Header */}
+        <div className="text-center mb-20 space-y-4">
           <span className="inline-block px-5 py-2 text-sm font-semibold rounded-full
                            bg-white/10 border border-white/20 backdrop-blur">
-            🚀 AI Email Writing Tool
+            📞 Contact Information
           </span>
+
+          <h2 className="text-4xl md:text-5xl font-extrabold">
+            Get in Touch With Us
+          </h2>
+
+          <p className="text-gray-400 max-w-2xl mx-auto">
+            We’re here to help. Reach out via email, phone, or visit us
+            by appointment. Our team usually responds within 24 hours.
+          </p>
         </div>
 
-        {/* Main Heading */}
-        <h2 className="text-4xl md:text-6xl font-extrabold leading-tight mb-6">
-          Start Writing{" "}
-          <span className="text-yellow-300">Better Emails</span>{" "}
-          Today
-        </h2>
+        {/* Info Grid */}
+        <div className="grid gap-16 md:grid-cols-3 text-center md:text-left">
 
-        {/* Subheading */}
-        <p className="text-gray-200 text-lg md:text-xl max-w-3xl mx-auto mb-10 leading-relaxed">
-          Join thousands of professionals, students, founders, and freelancers
-          who are already saving hours every week.
-          <br />
-          Generate clear, persuasive, and professional emails in seconds —
-          without stress.
-        </p>
+          {/* Email Card */}
+          <div className="group flex flex-col items-center md:items-start gap-4
+                          bg-white/5 p-8 rounded-2xl border border-white/10
+                          hover:border-purple-500/40 hover:scale-105
+                          transition-all duration-300">
+            <div className="text-purple-400 text-4xl">
+              <FaEnvelope />
+            </div>
 
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row justify-center gap-4 mb-8">
+            <h3 className="font-semibold text-xl">Email Us</h3>
 
-          {/* Primary CTA */}
-          <Link
-            to="/email-generator"
-            className="px-12 py-4 rounded-full font-semibold text-lg
-                       bg-black shadow-xl hover:scale-105 hover:bg-gray-900
-                       transition-all duration-300"
-          >
-            Generate My First Email 🚀
-          </Link>
+            <p className="text-gray-300 text-lg">
+              support@serenedale.com
+            </p>
 
-          {/* Secondary CTA */}
-          <Link
-            to="/features"
-            className="px-12 py-4 rounded-full font-semibold text-lg
-                       border border-white/30 hover:bg-white hover:text-black
-                       transition-all duration-300"
-          >
-            Explore Features
-          </Link>
+            <p className="text-gray-500 text-sm">
+              We respond within 24 hours.
+            </p>
+          </div>
+
+          {/* Phone Card */}
+          <div className="group flex flex-col items-center md:items-start gap-4
+                          bg-white/5 p-8 rounded-2xl border border-white/10
+                          hover:border-purple-500/40 hover:scale-105
+                          transition-all duration-300">
+            <div className="text-purple-400 text-4xl">
+              <FaPhoneAlt />
+            </div>
+
+            <h3 className="font-semibold text-xl">Call Us</h3>
+
+            <p className="text-gray-300 text-lg">
+              +1 (234) 567-890
+            </p>
+
+            <p className="text-gray-500 text-sm">
+              Mon–Fri, 9AM–6PM (EST)
+            </p>
+          </div>
+
+          {/* Address Card */}
+          <div className="group flex flex-col items-center md:items-start gap-4
+                          bg-white/5 p-8 rounded-2xl border border-white/10
+                          hover:border-purple-500/40 hover:scale-105
+                          transition-all duration-300">
+            <div className="text-purple-400 text-4xl">
+              <FaMapMarkerAlt />
+            </div>
+
+            <h3 className="font-semibold text-xl">Visit Us</h3>
+
+            <p className="text-gray-300 text-lg">
+              123 AI Street, Tech City
+            </p>
+
+            <p className="text-gray-500 text-sm">
+              Visits by appointment only
+            </p>
+          </div>
+
         </div>
 
-        {/* Trust Indicators */}
-        <div className="flex flex-col sm:flex-row justify-center gap-4 text-sm text-gray-300 mb-6">
-          <span>✅ No credit card required</span>
-          <span>⚡ Instant access</span>
-          <span>🔒 100% safe & private</span>
+        {/* Trust Footer */}
+        <div className="mt-20 text-center space-y-3 text-gray-400">
+          <p>
+            Trusted by thousands of users worldwide.
+          </p>
+          <p className="text-sm">
+            Your messages are private, encrypted, and handled securely.
+          </p>
         </div>
-
-        {/* Extra Note */}
-        <p className="text-gray-400 text-sm max-w-2xl mx-auto">
-          Built for productivity. Designed for clarity.
-          Trusted by users worldwide to write emails faster and smarter.
-        </p>
 
       </div>
     </section>
