@@ -1,100 +1,134 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
+import { Loader2, Copy, Pencil } from "lucide-react";
 
-const EmailGenerator = () => {
+const EmailGeneratorPro = () => {
   const [prompt, setPrompt] = useState("");
-  const [generatedEmail, setGeneratedEmail] = useState("");
+  const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
-  const [isEditing, setIsEditing] = useState(false);
+  const [editing, setEditing] = useState(false);
 
-  const handleGenerate = async () => {
+  const generateEmail = async () => {
     if (!prompt.trim()) return;
 
     setLoading(true);
-    setGeneratedEmail("");
-    setIsEditing(false);
+    setEmail("");
+    setEditing(false);
 
     try {
       const res = await axios.post(
         "https://ai-email-gen-three.vercel.app/generate-email",
         { prompt }
       );
-      setGeneratedEmail(res.data.generatedEmail);
-    } catch (error) {
-      console.error(error);
-      alert("❌ Error generating email. Try again.");
+      setEmail(res.data.generatedEmail);
+    } catch (err) {
+      alert("Something went wrong. Please try again.");
     } finally {
       setLoading(false);
     }
   };
 
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(email);
+    alert("Copied to clipboard ✅");
+  };
+
   return (
-    <div
-      className="min-h-screen flex items-center justify-center px-4 py-10 relative bg-gradient-to-b from-[#B372CF] to-[#1E1E2E]"
-    >
-      {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
+    <section className="min-h-screen bg-[#0B0B12] text-white px-6 py-24">
+      <div className="max-w-7xl mx-auto">
 
-      {/* Card */}
-      <div className="relative z-10 w-full max-w-3xl p-8 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 shadow-xl">
         {/* Header */}
-        <h1 className="text-4xl md:text-5xl font-bold text-center bg-gradient-to-b from-white to-[#B372CF] bg-clip-text text-transparent mb-3">
-          ✉️ AI Email Generator
-        </h1>
-        <p className="text-center text-gray-200 mb-8 text-sm md:text-base">
-          Generate professional, personalized emails in seconds — powered by AI.
-        </p>
+        <div className="text-center mb-20">
+          <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-white to-purple-400 bg-clip-text text-transparent">
+            AI Email Workspace
+          </h1>
+          <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
+            Describe what you want to say — Serenedale writes the perfect email for you.
+          </p>
+        </div>
 
-        {/* Prompt Input */}
-        <textarea
-          value={prompt}
-          onChange={(e) => setPrompt(e.target.value)}
-          placeholder="E.g., Write a thank-you email to a client for their purchase..."
-          rows={5}
-          className="w-full p-4 mb-6 rounded-xl bg-white/10 text-white placeholder-gray-300 border border-white/20 resize-none focus:outline-none focus:ring-2 focus:ring-purple-400 transition"
-        />
+        {/* Workspace */}
+        <div className="grid md:grid-cols-2 gap-10">
 
-        {/* Generate Button */}
-        <button
-          onClick={handleGenerate}
-          disabled={loading}
-          className={`w-full py-3 rounded-xl font-medium shadow-md transition-all duration-200 ${
-            loading
-              ? "bg-purple-400 cursor-not-allowed text-white"
-              : "bg-gradient-to-r from-[#B372CF] to-purple-600 hover:opacity-90 text-white"
-          }`}
-        >
-          {loading ? "Generating..." : "🚀 Generate Email"}
-        </button>
+          {/* LEFT: PROMPT */}
+          <div className="bg-white/5 border border-white/10 rounded-3xl p-8">
+            <h3 className="text-xl font-semibold mb-4">✍️ Your Instructions</h3>
 
-        {/* Generated Email Output */}
-        {generatedEmail && (
-          <div className="mt-8 p-6 rounded-xl bg-black/30 border border-white/20 shadow-inner text-white">
-            <div className="flex justify-between items-center mb-4">
-              <h2 className="text-lg font-semibold">📧 Generated Email</h2>
-              <button
-                onClick={() => setIsEditing(!isEditing)}
-                className="text-sm text-purple-300 hover:underline"
-              >
-                {isEditing ? "Save" : "Edit"}
-              </button>
+            <textarea
+              value={prompt}
+              onChange={(e) => setPrompt(e.target.value)}
+              placeholder="Example: Write a polite follow-up email to a recruiter after interview"
+              rows={8}
+              className="w-full bg-black/40 border border-white/10 rounded-xl p-4 text-gray-200 placeholder-gray-500 resize-none focus:outline-none focus:ring-2 focus:ring-purple-500"
+            />
+
+            <button
+              onClick={generateEmail}
+              disabled={loading}
+              className="mt-6 w-full flex items-center justify-center gap-2 py-3 rounded-xl font-semibold
+                         bg-purple-600 hover:bg-purple-700 transition disabled:opacity-60"
+            >
+              {loading ? <Loader2 className="animate-spin" /> : "Generate Email"}
+            </button>
+
+            <p className="text-xs text-gray-500 mt-4">
+              ⚡ Usually takes less than 5 seconds
+            </p>
+          </div>
+
+          {/* RIGHT: OUTPUT */}
+          <div className="relative bg-white/5 border border-white/10 rounded-3xl p-8">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-xl font-semibold">📨 Generated Email</h3>
+
+              {email && (
+                <div className="flex gap-3 text-gray-400">
+                  <button onClick={() => setEditing(!editing)}>
+                    <Pencil size={18} />
+                  </button>
+                  <button onClick={copyToClipboard}>
+                    <Copy size={18} />
+                  </button>
+                </div>
+              )}
             </div>
 
-            {isEditing ? (
-              <textarea
-                value={generatedEmail}
-                onChange={(e) => setGeneratedEmail(e.target.value)}
-                rows={8}
-                className="w-full p-3 bg-white/10 text-white border border-white/20 rounded-md resize-none focus:outline-none focus:ring-2 focus:ring-purple-400 transition"
-              />
-            ) : (
-              <div className="whitespace-pre-wrap leading-relaxed">{generatedEmail}</div>
+            {!email && (
+              <div className="h-full flex items-center justify-center text-gray-500 text-sm">
+                Generated email will appear here
+              </div>
             )}
+
+            {email && (
+              <>
+                {editing ? (
+                  <textarea
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    rows={12}
+                    className="w-full bg-black/40 border border-white/10 rounded-xl p-4 text-gray-200 resize-none focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  />
+                ) : (
+                  <div className="whitespace-pre-wrap leading-relaxed text-gray-200">
+                    {email}
+                  </div>
+                )}
+              </>
+            )}
+
+            {/* Glow */}
+            <div className="absolute -top-20 -right-20 w-72 h-72 bg-purple-500/20 blur-[120px] rounded-full" />
           </div>
-        )}
+
+        </div>
+
+        {/* Footer Note */}
+        <div className="mt-20 text-center text-gray-500 text-sm">
+          🔒 Your prompts are private • ✨ Unlimited generations • 🚀 AI-powered
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 
-export default EmailGenerator;
+export default EmailGeneratorPro;
