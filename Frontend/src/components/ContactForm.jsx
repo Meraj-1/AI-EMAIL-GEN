@@ -1,44 +1,62 @@
 import { useState } from "react";
 
 const ContactForm = () => {
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
   const [status, setStatus] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    setStatus("");
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Simple validation
     if (!formData.name || !formData.email || !formData.message) {
-      setStatus("Please fill out all fields.");
+      setStatus("❌ Please fill out all fields.");
       return;
     }
 
-    console.log("Form submitted:", formData);
-    setStatus("Thank you! Your message has been sent successfully.");
-    setFormData({ name: "", email: "", message: "" });
+    setLoading(true);
+
+    // Simulated API call
+    setTimeout(() => {
+      console.log("Form submitted:", formData);
+      setStatus("✅ Thank you! Your message has been sent.");
+      setFormData({ name: "", email: "", message: "" });
+      setLoading(false);
+    }, 1200);
   };
 
   return (
-    <section className="py-32 bg-gray-950 text-white px-6">
+    <section className="py-32 px-6 bg-gradient-to-b from-gray-950 to-black text-white">
       <div className="max-w-4xl mx-auto">
 
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Send Us a Message ✉️</h2>
+        <div className="text-center mb-16 space-y-4">
+          <span className="inline-block px-4 py-1 text-sm rounded-full bg-white/10 border border-white/20">
+            📩 Contact Support
+          </span>
+
+          <h2 className="text-4xl md:text-5xl font-extrabold">
+            Send Us a Message
+          </h2>
+
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Have questions, feedback, or suggestions? Our team is ready to assist you.  
-            Fill out the form below and we’ll get back to you as soon as possible.
+            Questions, feedback, or partnership ideas?
+            We usually respond within 24 hours.
           </p>
         </div>
 
         {/* Form */}
         <form
           onSubmit={handleSubmit}
-          className="grid gap-6 bg-white/5 p-10 rounded-2xl shadow-lg"
+          className="grid gap-6 bg-white/5 backdrop-blur p-10 rounded-2xl border border-white/10 shadow-2xl"
         >
           {/* Name */}
           <div className="relative">
@@ -47,11 +65,14 @@ const ContactForm = () => {
               name="name"
               value={formData.name}
               onChange={handleChange}
-              required
-              className="peer w-full p-4 rounded bg-black border border-white/20 text-white placeholder-transparent"
+              className="peer w-full p-4 rounded-xl bg-black border border-white/20 text-white
+                         focus:border-purple-500 focus:ring-2 focus:ring-purple-500/30
+                         placeholder-transparent outline-none transition"
               placeholder="Your Name"
             />
-            <label className="absolute left-4 top-3 text-gray-400 text-sm peer-placeholder-shown:top-4 peer-placeholder-shown:text-gray-500 peer-placeholder-shown:text-base transition-all">
+            <label className="absolute left-4 top-3 text-gray-400 text-sm
+                              peer-placeholder-shown:top-4 peer-placeholder-shown:text-base
+                              peer-focus:top-3 peer-focus:text-sm transition-all">
               Your Name
             </label>
           </div>
@@ -63,11 +84,14 @@ const ContactForm = () => {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              required
-              className="peer w-full p-4 rounded bg-black border border-white/20 text-white placeholder-transparent"
+              className="peer w-full p-4 rounded-xl bg-black border border-white/20 text-white
+                         focus:border-purple-500 focus:ring-2 focus:ring-purple-500/30
+                         placeholder-transparent outline-none transition"
               placeholder="Your Email"
             />
-            <label className="absolute left-4 top-3 text-gray-400 text-sm peer-placeholder-shown:top-4 peer-placeholder-shown:text-gray-500 peer-placeholder-shown:text-base transition-all">
+            <label className="absolute left-4 top-3 text-gray-400 text-sm
+                              peer-placeholder-shown:top-4 peer-placeholder-shown:text-base
+                              peer-focus:top-3 peer-focus:text-sm transition-all">
               Your Email
             </label>
           </div>
@@ -79,50 +103,57 @@ const ContactForm = () => {
               rows="6"
               value={formData.message}
               onChange={handleChange}
-              required
-              className="peer w-full p-4 rounded bg-black border border-white/20 text-white placeholder-transparent resize-none"
+              className="peer w-full p-4 rounded-xl bg-black border border-white/20 text-white
+                         focus:border-purple-500 focus:ring-2 focus:ring-purple-500/30
+                         placeholder-transparent outline-none resize-none transition"
               placeholder="Your Message"
             ></textarea>
-            <label className="absolute left-4 top-3 text-gray-400 text-sm peer-placeholder-shown:top-4 peer-placeholder-shown:text-gray-500 peer-placeholder-shown:text-base transition-all">
+            <label className="absolute left-4 top-3 text-gray-400 text-sm
+                              peer-placeholder-shown:top-4 peer-placeholder-shown:text-base
+                              peer-focus:top-3 peer-focus:text-sm transition-all">
               Your Message
             </label>
           </div>
 
-          {/* Status Message */}
+          {/* Status */}
           {status && (
             <p
-              className={`text-center ${
+              className={`text-center font-semibold ${
                 status.includes("Thank") ? "text-green-400" : "text-red-400"
-              } font-semibold`}
+              }`}
             >
               {status}
             </p>
           )}
 
-          {/* Submit Button */}
+          {/* Submit */}
           <button
             type="submit"
-            className="bg-purple-600 hover:bg-purple-700 transition px-6 py-3 rounded-xl font-semibold text-lg shadow-lg"
+            disabled={loading}
+            className="flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700
+                       disabled:opacity-60 disabled:cursor-not-allowed
+                       transition px-6 py-4 rounded-xl font-semibold text-lg shadow-xl"
           >
-            Send Message 🚀
+            {loading ? "Sending..." : "Send Message 🚀"}
           </button>
         </form>
 
-        {/* Extra Contact Info */}
+        {/* Extra Info */}
         <div className="mt-16 text-center text-gray-400 space-y-4">
           <p>
-            Prefer direct contact? Email us at{" "}
-            <a href="mailto:support@serenedale.com" className="text-purple-400 underline">
+            Prefer email? Reach us at{" "}
+            <a
+              href="mailto:support@serenedale.com"
+              className="text-purple-400 underline hover:text-purple-300"
+            >
               support@serenedale.com
             </a>
           </p>
-          <p>
-            Follow us on social media for updates and tips:
-          </p>
-          <div className="flex justify-center gap-6 mt-2 text-2xl">
-            <a href="#" className="hover:text-purple-400 transition">🐦</a>
-            <a href="#" className="hover:text-purple-400 transition">💼</a>
-            <a href="#" className="hover:text-purple-400 transition">📸</a>
+
+          <div className="flex justify-center gap-6 text-2xl pt-2">
+            <a className="hover:text-purple-400 transition">🐦</a>
+            <a className="hover:text-purple-400 transition">💼</a>
+            <a className="hover:text-purple-400 transition">📸</a>
           </div>
         </div>
 
