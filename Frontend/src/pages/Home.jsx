@@ -4,10 +4,10 @@ import React, { lazy, Suspense } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
-// Hero loads immediately
+// Hero (NO Header inside Hero now)
 import Hero from "../components/Hero";
 
-// Lazy-loaded sections (better performance)
+// Lazy sections
 const ProblemSolution = lazy(() => import("../components/ProblemSolution"));
 const HowItWorks = lazy(() => import("../components/HowItWorks"));
 const Examples = lazy(() => import("../components/Examples"));
@@ -20,19 +20,31 @@ const Testimonial = lazy(() => import("../components/Testimonial"));
 
 const Home = () => {
   return (
-    <main className="bg-gray-950 text-white overflow-hidden">
+    <main className="bg-[#05070f] text-white overflow-hidden">
 
-      {/* Header */}
+      {/* GLOBAL HEADER */}
       <Header />
 
-      {/* Hero */}
+      {/* HERO */}
       <Hero />
 
-      {/* Content Sections */}
+      {/* LAZY CONTENT */}
       <Suspense
         fallback={
-          <div className="py-32 text-center text-gray-500">
-            Loading awesome content...
+          <div className="py-40 flex flex-col items-center justify-center gap-6
+                          text-cyan-400 tracking-widest uppercase text-xs">
+
+            {/* Loader Ring */}
+            <div className="w-14 h-14 border-2 border-cyan-400/30
+                            border-t-cyan-400 rounded-full animate-spin" />
+
+            {/* System Text */}
+            <div className="text-center space-y-2">
+              <p>Initializing Neural Modules</p>
+              <p className="text-gray-500 text-[10px]">
+                Loading AI subsystems...
+              </p>
+            </div>
           </div>
         }
       >
@@ -47,7 +59,7 @@ const Home = () => {
         <Testimonial />
       </Suspense>
 
-      {/* Footer */}
+      {/* FOOTER */}
       <Footer />
     </main>
   );
