@@ -1,72 +1,73 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Cpu } from "lucide-react";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const navLinkClass = ({ isActive }) =>
-    `relative text-sm font-medium transition-colors duration-200
+    `uppercase tracking-widest text-xs font-semibold transition-all
      ${
        isActive
-         ? "text-white after:absolute after:-bottom-1 after:left-0 after:w-full after:h-[2px] after:bg-purple-500"
-         : "text-gray-300 hover:text-white"
+         ? "text-cyan-400 border-b border-cyan-400"
+         : "text-gray-400 hover:text-cyan-300"
      }`;
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 backdrop-blur-xl bg-black/70 border-b border-white/10">
+    <header className="fixed top-0 left-0 w-full z-50 bg-[#0b0f19]/90 backdrop-blur border-b border-cyan-500/20">
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
 
-        {/* Logo */}
+        {/* LOGO */}
         <Link
           to="/"
-          className="text-2xl font-extrabold tracking-wide text-white"
+          className="flex items-center gap-2 text-cyan-400 font-bold tracking-[0.3em] text-sm"
         >
-          Seren<span className="text-purple-500">dale</span>
+          <Cpu size={18} />
+          <span>NEURAL<span className="text-purple-500">CORE</span></span>
         </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-10">
+        {/* DESKTOP NAV */}
+        <nav className="hidden md:flex items-center gap-12">
           <NavLink to="/about" className={navLinkClass}>
             About
           </NavLink>
-
           <NavLink to="/features" className={navLinkClass}>
-            Features
+            Systems
           </NavLink>
-
           <NavLink to="/contact" className={navLinkClass}>
             Contact
           </NavLink>
         </nav>
 
-        {/* Desktop CTA */}
+        {/* DESKTOP CTA */}
         <div className="hidden md:block">
           <Link
             to="/email-generator"
-            className="px-6 py-2 rounded-full bg-purple-600 hover:bg-purple-700
-                       transition font-semibold text-sm shadow-lg"
+            className="px-6 py-2 text-xs font-bold tracking-widest
+                       border border-cyan-400 text-cyan-400
+                       hover:bg-cyan-400 hover:text-black
+                       transition-all"
           >
-            Try AI Email Writer 🚀
+            INITIATE AI →
           </Link>
         </div>
 
-        {/* Mobile Menu Button */}
+        {/* MOBILE TOGGLE */}
         <button
           aria-label="Toggle Menu"
           onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden text-white"
+          className="md:hidden text-cyan-400"
         >
-          {menuOpen ? <X size={26} /> : <Menu size={26} />}
+          {menuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
-      {/* Mobile Navigation Panel */}
+      {/* MOBILE PANEL */}
       <div
-        className={`md:hidden transition-all duration-300 ease-in-out overflow-hidden
-        ${menuOpen ? "max-h-[420px] opacity-100" : "max-h-0 opacity-0"}`}
+        className={`md:hidden overflow-hidden transition-all duration-300
+        ${menuOpen ? "max-h-[360px] opacity-100" : "max-h-0 opacity-0"}`}
       >
-        <nav className="px-6 py-6 bg-black/90 backdrop-blur-xl border-t border-white/10 space-y-5">
+        <nav className="px-6 py-6 bg-[#05070f] border-t border-cyan-500/20 space-y-6">
 
           <NavLink
             to="/about"
@@ -81,7 +82,7 @@ const Header = () => {
             onClick={() => setMenuOpen(false)}
             className={navLinkClass}
           >
-            Features
+            Systems
           </NavLink>
 
           <NavLink
@@ -92,15 +93,16 @@ const Header = () => {
             Contact
           </NavLink>
 
-          {/* Mobile CTA */}
           <Link
             to="/email-generator"
             onClick={() => setMenuOpen(false)}
-            className="block text-center mt-4 px-6 py-3 rounded-xl
-                       bg-purple-600 hover:bg-purple-700 transition
-                       font-semibold text-white shadow-lg"
+            className="block mt-6 px-6 py-3 text-center
+                       border border-purple-500 text-purple-400
+                       tracking-widest font-bold text-xs
+                       hover:bg-purple-500 hover:text-black
+                       transition-all"
           >
-            Start Writing Emails 🚀
+            RUN AI MODULE
           </Link>
         </nav>
       </div>
