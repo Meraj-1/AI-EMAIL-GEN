@@ -37,28 +37,31 @@ const Milestones = () => {
   }, []);
 
   return (
-    <section className="relative py-40 px-6 bg-gradient-to-b from-black via-gray-900 to-black text-white overflow-hidden">
+    <section className="relative py-40 px-6 bg-black text-white overflow-hidden font-mono">
+      {/* Neon Background Grid */}
+      <div className="absolute inset-0 grid grid-cols-10 grid-rows-10 gap-1 opacity-5">
+        {Array.from({ length: 100 }).map((_, i) => (
+          <div key={i} className="w-full h-full bg-cyan-500/20 animate-pulse" />
+        ))}
+      </div>
 
-      {/* Subtle Background Glow */}
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-600/10 via-indigo-600/10 to-blue-600/10" />
-
-      <div className="relative max-w-7xl mx-auto text-center">
+      <div className="relative max-w-7xl mx-auto text-center z-10">
 
         {/* Header */}
         <div className="mb-28 max-w-3xl mx-auto space-y-6">
-          <span className="inline-block px-5 py-2 text-sm font-semibold rounded-full
-                           bg-white/10 border border-white/20">
-            📊 Platform Impact
+          <span className="inline-block px-5 py-2 text-xs font-semibold rounded-full
+                           bg-cyan-500/10 border border-cyan-400/40 tracking-widest">
+            🤖 Robotics Stats
           </span>
 
-          <h2 className="text-4xl md:text-5xl font-extrabold">
-            Measurable Results That Speak for Themselves
+          <h2 className="text-4xl md:text-5xl font-extrabold text-transparent
+                         bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500">
+            Milestones of AI Precision
           </h2>
 
           <p className="text-gray-400 text-lg">
-            Serenedale is trusted by professionals and teams worldwide to
-            write better emails, faster — with measurable improvements in
-            productivity and response rates.
+            Serenedale powers robotic efficiency in communication.
+            Every stat reflects automated intelligence in action.
           </p>
         </div>
 
@@ -67,65 +70,53 @@ const Milestones = () => {
           {milestones.map((item, index) => (
             <div
               key={index}
-              className="group bg-white/5 border border-white/10
-                         rounded-3xl p-8 flex flex-col items-center
-                         hover:border-purple-500/40 hover:scale-105
-                         transition-all duration-300"
+              className="group relative bg-black/20 border border-cyan-500/40
+                         rounded-2xl p-6 flex flex-col items-center
+                         hover:border-purple-500 hover:scale-105 transition-transform duration-300
+                         shadow-[0_0_20px_rgba(0,255,255,0.2)]"
             >
-              <div className="text-purple-400 text-4xl mb-4 group-hover:scale-110 transition">
+              {/* Icon in Neon Circle */}
+              <div className="relative mb-4 w-16 h-16 flex items-center justify-center
+                              rounded-full border-2 border-cyan-400 shadow-[0_0_10px_cyan] group-hover:shadow-[0_0_25px_cyan]
+                              transition duration-300 text-3xl text-cyan-400">
                 {item.icon}
+                <span className="absolute -inset-1 rounded-full border border-cyan-300/40 blur-sm animate-pulse"></span>
               </div>
 
-              <h3 className="text-4xl md:text-5xl font-extrabold text-purple-400">
-                {counts[index].toLocaleString()}
-                {item.suffix}
+              {/* Count */}
+              <h3 className="text-3xl md:text-4xl font-bold text-cyan-400 mb-2">
+                {counts[index].toLocaleString()}{item.suffix}
               </h3>
 
-              <p className="mt-2 text-gray-300 font-medium text-center">
-                {item.label}
-              </p>
+              <p className="text-gray-300 text-sm font-medium">{item.label}</p>
+
+              {/* Neon bar underline */}
+              <div className="mt-3 w-12 h-1 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full animate-pulse" />
             </div>
           ))}
         </div>
 
-        {/* Supporting Proof Points */}
-        <div className="mt-32 max-w-5xl mx-auto grid md:grid-cols-2 gap-6 text-gray-300 text-left">
-          <p>⚡ Rapid adoption across startups, enterprises, freelancers, and students.</p>
-          <p>📈 Teams report significantly higher reply and engagement rates.</p>
-          <p>🌍 Global usage across multiple countries and industries.</p>
-          <p>🧠 AI continuously improves through feedback and optimization.</p>
-        </div>
-
-        {/* Testimonial */}
-        <div className="mt-28 max-w-3xl mx-auto bg-white/10 border border-white/10
-                        p-10 rounded-3xl shadow-2xl">
-          <p className="text-gray-200 italic leading-relaxed mb-6">
-            “Serenedale has completely changed how our team communicates.
-            Emails that once took hours are now written in seconds —
-            and our response rates have improved dramatically.”
-          </p>
-          <p className="text-purple-400 font-semibold">
-            Alex Johnson <span className="text-gray-400 font-normal">— Startup Founder</span>
-          </p>
+        {/* Robotics Proof Points */}
+        <div className="mt-32 max-w-5xl mx-auto grid md:grid-cols-2 gap-6 text-cyan-300 text-left font-mono">
+          <p>⚡ Automated email generation with zero human lag.</p>
+          <p>📈 Metrics monitored in real-time for precision improvements.</p>
+          <p>🌍 Globally distributed AI servers for ultra-fast responses.</p>
+          <p>🧠 Self-learning algorithms refine style, tone, and engagement rates.</p>
         </div>
 
         {/* CTA */}
         <div className="mt-32 text-center space-y-6">
-          <h4 className="text-3xl md:text-4xl font-bold">
-            Be Part of the Next Growth Story
+          <h4 className="text-3xl md:text-4xl font-bold text-transparent
+                         bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500">
+            Join the AI-Powered Revolution
           </h4>
-
           <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-            Join thousands of professionals already using Serenedale
-            to write smarter, faster, and more effective emails.
+            Step into the future of automated, professional email communication.
           </p>
-
           <button
-            className="px-14 py-4 rounded-2xl bg-purple-600
-                       hover:bg-purple-700 transition
-                       font-semibold text-lg shadow-xl"
-          >
-            Get Started Free 🚀
+            className="px-14 py-4 rounded-2xl bg-gradient-to-r from-cyan-500 to-purple-500
+                       hover:opacity-90 transition shadow-[0_0_25px_cyan] font-semibold text-lg">
+            Activate AI Now 🚀
           </button>
         </div>
 

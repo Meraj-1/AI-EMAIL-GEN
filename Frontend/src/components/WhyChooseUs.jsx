@@ -1,38 +1,38 @@
 const usps = [
   {
-    title: "Human-Like AI Writing",
+    title: "Advanced Robotics Design",
     description:
-      "Our AI understands context, intent, and tone to craft emails that sound natural, confident, and truly human — never robotic.",
+      "Our robots are engineered with cutting-edge AI and precision mechanics for unmatched performance and reliability.",
     icon: "🤖",
   },
   {
-    title: "Instant Results",
+    title: "Rapid Deployment",
     description:
-      "No waiting, no revisions. Enter a few details and get a polished, ready-to-send email in seconds.",
+      "Get fully functional robots ready for your projects or production lines in record time — no delays, no hassle.",
     icon: "⚡",
   },
   {
-    title: "Privacy-First by Design",
+    title: "Safety-First Engineering",
     description:
-      "Your emails are never stored or shared. Everything you write stays private and secure.",
+      "Every robot is designed with safety protocols and fail-safes to ensure secure operation in any environment.",
     icon: "🔒",
   },
   {
-    title: "Zero Learning Curve",
+    title: "Plug-and-Play Setup",
     description:
-      "No prompts, no setup, no confusion. Just fill in the basics and click generate.",
+      "Minimal setup required. Just connect, configure, and start automating your tasks immediately.",
     icon: "🛠️",
   },
   {
-    title: "Higher Reply Rates",
+    title: "Optimized Efficiency",
     description:
-      "Emails are structured for clarity, engagement, and action — helping you get more replies.",
+      "Robots built to streamline operations, reduce errors, and maximize productivity across industries.",
     icon: "📈",
   },
   {
-    title: "Flexible Tones",
+    title: "Customizable Functions",
     description:
-      "Switch seamlessly between professional, friendly, persuasive, or formal tones anytime.",
+      "Easily adapt robots to different tasks with flexible programming and adjustable modules.",
     icon: "🎨",
   },
 ];
@@ -50,15 +50,15 @@ const WhyChooseUs = () => {
         {/* Header */}
         <div className="mb-24 max-w-3xl mx-auto">
           <span className="inline-block mb-4 px-4 py-1 text-xs rounded-full bg-white/10 border border-white/20">
-            💜 Why Serenedale
+            🤖 Why RoboTech
           </span>
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Why Choose Serenedale?
+            Why Choose RoboTech Robotics?
           </h2>
           <p className="text-gray-400 text-lg leading-relaxed">
-            Serenedale isn’t just another email generator.
-            It’s built to save time, improve communication,
-            and protect your privacy — every step of the way.
+            RoboTech isn’t just another robotics provider.
+            We build intelligent, safe, and efficient robots
+            that help businesses and creators achieve more.
           </p>
         </div>
 
@@ -87,45 +87,45 @@ const WhyChooseUs = () => {
         {/* Trust Stats */}
         <div className="mt-28 grid grid-cols-2 md:grid-cols-4 gap-10">
           <div>
-            <h4 className="text-3xl font-bold text-purple-400">10k+</h4>
-            <p className="text-sm text-gray-400">Emails Generated</p>
+            <h4 className="text-3xl font-bold text-purple-400">500+</h4>
+            <p className="text-sm text-gray-400">Robots Deployed</p>
           </div>
           <div>
-            <h4 className="text-3xl font-bold text-purple-400">3x</h4>
-            <p className="text-sm text-gray-400">Faster Writing</p>
+            <h4 className="text-3xl font-bold text-purple-400">2x</h4>
+            <p className="text-sm text-gray-400">Productivity Boost</p>
           </div>
           <div>
-            <h4 className="text-3xl font-bold text-purple-400">98%</h4>
-            <p className="text-sm text-gray-400">User Satisfaction</p>
+            <h4 className="text-3xl font-bold text-purple-400">99%</h4>
+            <p className="text-sm text-gray-400">Operational Reliability</p>
           </div>
           <div>
             <h4 className="text-3xl font-bold text-purple-400">100%</h4>
-            <p className="text-sm text-gray-400">Private & Secure</p>
+            <p className="text-sm text-gray-400">Safety Certified</p>
           </div>
         </div>
 
         {/* Highlights */}
         <div className="mt-24 max-w-4xl mx-auto text-left space-y-5 text-gray-300">
-          <p>✨ Trusted by freelancers, founders, students, and professionals worldwide.</p>
-          <p>📩 Works for cold emails, follow-ups, job applications, apologies, and pitches.</p>
-          <p>🧠 Continuously improving AI that learns what works best.</p>
-          <p>🌍 Seamless experience across desktop, tablet, and mobile.</p>
-          <p>🚀 Save hours every week and focus on what truly matters.</p>
+          <p>✨ Trusted by manufacturers, researchers, and tech innovators worldwide.</p>
+          <p>🛠️ Works for assembly, logistics, research, inspection, and more.</p>
+          <p>🧠 Continuously updated software for smarter, more efficient robots.</p>
+          <p>🌍 Seamless operation across factories, labs, and commercial environments.</p>
+          <p>🚀 Save time, reduce errors, and scale your operations effortlessly.</p>
         </div>
 
         {/* CTA */}
         <div className="mt-28 bg-gradient-to-r from-purple-600 to-indigo-600
                         rounded-2xl p-12 text-center">
           <h3 className="text-3xl font-bold mb-4">
-            Start Writing Smarter Emails Today 🚀
+            Start Automating Smarter Today 🚀
           </h3>
           <p className="text-sm opacity-90 mb-8">
-            No login required • Free to try • Instant results
+            Explore our robots • Schedule a demo • Deploy instantly
           </p>
           <button className="px-12 py-4 rounded-xl bg-black
                              font-semibold text-lg
                              hover:scale-105 transition-transform">
-            Generate My First Email
+            Explore RoboTech Solutions
           </button>
         </div>
 
