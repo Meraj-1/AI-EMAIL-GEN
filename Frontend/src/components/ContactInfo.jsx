@@ -11,7 +11,7 @@ const ContactInfo = () => {
             <FaEnvelope />
           </div>
           <h3 className="font-semibold text-xl mb-1">Email</h3>
-          <p className="text-gray-300 text-lg">support@serenedale.com</p>
+          <p className="text-gray-300 text-lg">support@robotech.com</p>
           <p className="text-gray-500 text-sm mt-2">We respond within 24 hours.</p>
         </div>
 
@@ -21,7 +21,7 @@ const ContactInfo = () => {
             <FaPhoneAlt />
           </div>
           <h3 className="font-semibold text-xl mb-1">Phone</h3>
-          <p className="text-gray-300 text-lg">+1 234 567 890</p>
+          <p className="text-gray-300 text-lg">+1 555 123 4567</p>
           <p className="text-gray-500 text-sm mt-2">Available Mon-Fri, 9AM-6PM EST</p>
         </div>
 
@@ -31,7 +31,7 @@ const ContactInfo = () => {
             <FaMapMarkerAlt />
           </div>
           <h3 className="font-semibold text-xl mb-1">Address</h3>
-          <p className="text-gray-300 text-lg">123 AI Street, Tech City, USA</p>
+          <p className="text-gray-300 text-lg">456 Robotics Ave, Tech Park, USA</p>
           <p className="text-gray-500 text-sm mt-2">Visit us by appointment only</p>
         </div>
 
@@ -39,7 +39,7 @@ const ContactInfo = () => {
 
       {/* Optional CTA / Trust */}
       <div className="mt-16 text-center text-gray-400">
-        <p>Trusted by thousands of users worldwide. Your inquiries are safe and secure.</p>
+        <p>Trusted by robotics innovators and businesses worldwide. Your inquiries are safe and secure.</p>
       </div>
     </section>
   );
