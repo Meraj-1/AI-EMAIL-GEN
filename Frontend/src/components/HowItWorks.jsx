@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 const steps = [
   {
     id: "01",
@@ -17,12 +19,44 @@ const steps = [
 ];
 
 const HowItWorks = () => {
+  // Optional: Floating particles state
+  const [particles, setParticles] = useState([]);
+
+  useEffect(() => {
+    // Generate random particles
+    const temp = Array.from({ length: 20 }, () => ({
+      x: Math.random() * 100 + "%",
+      y: Math.random() * 100 + "%",
+      size: Math.random() * 4 + 2,
+      delay: Math.random() * 5,
+    }));
+    setParticles(temp);
+  }, []);
+
   return (
     <section className="relative py-32 bg-[#05070f] text-white overflow-hidden">
 
-      {/* Background Effects */}
+      {/* Floating Neon Particles */}
+      {particles.map((p, idx) => (
+        <span
+          key={idx}
+          className="absolute rounded-full bg-cyan-400/40 animate-pulse"
+          style={{
+            top: p.y,
+            left: p.x,
+            width: `${p.size}px`,
+            height: `${p.size}px`,
+            animationDelay: `${p.delay}s`,
+          }}
+        />
+      ))}
+
+      {/* Background Grid + Radial Gradient */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,rgba(56,189,248,0.12),transparent_60%)]" />
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:80px_80px]" />
+      <div className="absolute inset-0 
+                      bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),
+                           linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] 
+                      bg-[size:80px_80px]" />
 
       <div className="relative z-10 max-w-6xl mx-auto px-6">
 
@@ -33,10 +67,9 @@ const HowItWorks = () => {
           </p>
 
           <h2 className="text-4xl md:text-5xl font-extrabold mb-6
-                         bg-gradient-to-b from-white to-indigo-300
+                         bg-gradient-to-r from-cyan-400 via-indigo-400 to-purple-400
                          bg-clip-text text-transparent">
-            AI Email Generation
-            <br />Operational Flow
+            AI Email Generation <br /> Operational Flow
           </h2>
 
           <p className="text-gray-400 text-lg leading-relaxed">
@@ -52,17 +85,20 @@ const HowItWorks = () => {
               key={step.id}
               className="relative bg-black/60 border border-white/10
                          rounded-2xl p-10 backdrop-blur-xl
-                         hover:border-cyan-400/40 transition"
+                         hover:border-cyan-400/50 hover:scale-105
+                         transition-all duration-300 shadow-[0_0_20px_rgba(56,189,248,0.2)]"
             >
               {/* Step Index */}
               <span className="absolute -top-4 left-6 px-4 py-1
                                text-[10px] tracking-widest
-                               bg-cyan-400/10 text-cyan-300
+                               bg-gradient-to-r from-cyan-400 to-indigo-400 text-transparent bg-clip-text
                                border border-cyan-400/30 rounded-full">
                 STEP {step.id}
               </span>
 
-              <h3 className="text-2xl font-semibold mt-6 mb-4 text-white">
+              <h3 className="text-2xl font-semibold mt-6 mb-4
+                             bg-gradient-to-r from-cyan-400 via-indigo-400 to-purple-400
+                             bg-clip-text text-transparent">
                 {step.title}
               </h3>
 
@@ -78,7 +114,9 @@ const HowItWorks = () => {
 
           {/* Left */}
           <div>
-            <h3 className="text-3xl font-bold mb-8">
+            <h3 className="text-3xl font-bold mb-8
+                           bg-gradient-to-r from-cyan-400 to-indigo-400
+                           bg-clip-text text-transparent">
               Designed for Zero Cognitive Load
             </h3>
 
@@ -95,16 +133,19 @@ const HowItWorks = () => {
           <div className="relative bg-gradient-to-br
                           from-indigo-600/15 to-cyan-500/10
                           border border-indigo-400/30
-                          rounded-2xl p-10 backdrop-blur-xl">
-
+                          rounded-2xl p-10 backdrop-blur-xl
+                          hover:shadow-[0_0_40px_rgba(56,189,248,0.3)]
+                          transition">
             <span className="absolute -top-3 left-6 px-4 py-1
                              text-[10px] tracking-widest
-                             bg-indigo-400/10 text-indigo-300
+                             bg-gradient-to-r from-indigo-400 to-cyan-400 text-transparent bg-clip-text
                              border border-indigo-400/30 rounded-full">
               TARGET USERS
             </span>
 
-            <h4 className="text-2xl font-semibold mb-6 text-white">
+            <h4 className="text-2xl font-semibold mb-6
+                           bg-gradient-to-r from-cyan-400 via-indigo-400 to-purple-400
+                           bg-clip-text text-transparent">
               Built for Modern Professionals
             </h4>
 
@@ -124,7 +165,9 @@ const HowItWorks = () => {
 
         {/* CTA */}
         <div className="mt-32 text-center">
-          <h4 className="text-3xl font-bold mb-4">
+          <h4 className="text-3xl font-bold mb-4
+                         bg-gradient-to-r from-cyan-400 via-indigo-400 to-purple-400
+                         bg-clip-text text-transparent">
             Initialize Your First AI-Generated Email
           </h4>
 
@@ -136,8 +179,9 @@ const HowItWorks = () => {
             className="px-14 py-4 rounded-xl
                        bg-gradient-to-r from-cyan-500 to-indigo-600
                        text-sm font-semibold tracking-wide
-                       shadow-[0_0_40px_rgba(56,189,248,0.5)]
-                       hover:scale-105 transition-transform"
+                       shadow-[0_0_60px_rgba(56,189,248,0.7)]
+                       hover:scale-105 hover:shadow-[0_0_80px_rgba(56,189,248,1)]
+                       transition-transform duration-300"
           >
             START AI GENERATION
           </button>
