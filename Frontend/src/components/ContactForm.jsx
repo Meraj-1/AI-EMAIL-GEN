@@ -18,7 +18,7 @@ const ContactForm = () => {
     e.preventDefault();
 
     if (!formData.name || !formData.email || !formData.message) {
-      setStatus("❌ Please fill out all fields.");
+      setStatus("Please fill out all fields.");
       return;
     }
 
@@ -27,7 +27,7 @@ const ContactForm = () => {
     // Simulated API call
     setTimeout(() => {
       console.log("Form submitted:", formData);
-      setStatus("✅ Thank you! Your message has been sent.");
+      setStatus("Thank you! Your message has been sent.");
       setFormData({ name: "", email: "", message: "" });
       setLoading(false);
     }, 1200);
@@ -40,7 +40,7 @@ const ContactForm = () => {
         {/* Header */}
         <div className="text-center mb-16 space-y-4">
           <span className="inline-block px-4 py-1 text-sm rounded-full bg-white/10 border border-white/20">
-            📩 Contact Support
+            Contact Support
           </span>
 
           <h2 className="text-4xl md:text-5xl font-extrabold">
@@ -48,8 +48,7 @@ const ContactForm = () => {
           </h2>
 
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Questions, feedback, or partnership ideas?
-            We usually respond within 24 hours.
+            Questions, feedback, or partnership ideas? Our team usually responds within 24 hours.
           </p>
         </div>
 
@@ -134,7 +133,7 @@ const ContactForm = () => {
                        disabled:opacity-60 disabled:cursor-not-allowed
                        transition px-6 py-4 rounded-xl font-semibold text-lg shadow-xl"
           >
-            {loading ? "Sending..." : "Send Message 🚀"}
+            {loading ? "Sending..." : "Send Message"}
           </button>
         </form>
 
@@ -143,17 +142,17 @@ const ContactForm = () => {
           <p>
             Prefer email? Reach us at{" "}
             <a
-              href="mailto:support@serenedale.com"
+              href="mailto:support@robotech.com"
               className="text-purple-400 underline hover:text-purple-300"
             >
-              support@serenedale.com
+              support@robotech.com
             </a>
           </p>
 
           <div className="flex justify-center gap-6 text-2xl pt-2">
-            <a className="hover:text-purple-400 transition">🐦</a>
-            <a className="hover:text-purple-400 transition">💼</a>
-            <a className="hover:text-purple-400 transition">📸</a>
+            <a className="hover:text-purple-400 transition">Twitter</a>
+            <a className="hover:text-purple-400 transition">LinkedIn</a>
+            <a className="hover:text-purple-400 transition">Instagram</a>
           </div>
         </div>
 
