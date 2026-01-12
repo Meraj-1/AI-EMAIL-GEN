@@ -1,123 +1,167 @@
 const Examples = () => {
   return (
-    <section className="py-28 bg-black text-white px-6">
-      <div className="max-w-6xl mx-auto">
-        
+    <section className="relative py-32 bg-[#05070f] text-white px-6 overflow-hidden">
+
+      {/* Background Grid */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:90px_90px]" />
+
+      <div className="relative z-10 max-w-6xl mx-auto">
+
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-20">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Example Output ✉️
+        <div className="text-center max-w-3xl mx-auto mb-24">
+          <p className="text-xs tracking-[0.35em] text-indigo-400 mb-4">
+            AI OUTPUT SAMPLES
+          </p>
+
+          <h2 className="text-4xl md:text-5xl font-extrabold mb-6
+                         bg-gradient-to-b from-white to-indigo-300
+                         bg-clip-text text-transparent">
+            Generated Email
+            <br />Examples
           </h2>
-          <p className="text-gray-400 text-lg">
-            Ye sirf ek example hai. Hamara AI isi level ke
-            professional, clear aur response-driven emails generate karta hai —
-            har use-case ke liye.
+
+          <p className="text-gray-400 text-lg leading-relaxed">
+            Below are sample outputs produced by the Serenedale AI
+            communication engine — optimized for clarity, tone, and response rate.
           </p>
         </div>
 
         {/* Example Cards */}
-        <div className="grid md:grid-cols-2 gap-10">
-          
-          {/* Example 1 */}
-          <div className="bg-white/5 border border-white/10 rounded-2xl p-8">
-            <p className="text-purple-400 font-semibold mb-4">
-              📌 Follow-up Email
-            </p>
+        <div className="grid md:grid-cols-2 gap-12">
 
-            <div className="text-sm text-gray-300 leading-relaxed">
-              <p className="text-purple-300 font-medium">
-                Subject: Following up on our conversation
+          {/* Example 1 */}
+          <div className="relative bg-black/60 border border-white/10
+                          rounded-2xl p-10 backdrop-blur-xl">
+
+            <span className="absolute -top-4 left-6 px-4 py-1
+                             text-[10px] tracking-widest
+                             bg-indigo-400/10 text-indigo-300
+                             border border-indigo-400/30 rounded-full">
+              FOLLOW-UP EMAIL
+            </span>
+
+            <div className="text-sm text-gray-300 leading-relaxed mt-6 space-y-4">
+              <p className="text-indigo-300 font-medium">
+                Subject: Following up on our recent discussion
               </p>
 
-              <p className="mt-4">
-                Hi John,
+              <p>
+                Hello John,
                 <br /><br />
-                I hope you’re doing well. I just wanted to follow up on our last
-                conversation and check if you had a chance to review the details
-                we discussed.
+                I hope this message finds you well. I wanted to follow up
+                regarding our recent conversation and check if you had an
+                opportunity to review the points we discussed.
                 <br /><br />
-                Please let me know if you need any additional information from my
-                side. I’d be happy to assist.
+                Please feel free to let me know if you require any additional
+                information from my end. I would be happy to assist.
                 <br /><br />
-                Looking forward to your response.
-                <br /><br />
-                Best regards,  
+                Kind regards,
                 <br />
                 Alex
               </p>
             </div>
+
+            <div className="mt-6 text-xs text-gray-500 flex justify-between">
+              <span>Status: Generated</span>
+              <span className="text-indigo-400">Serenedale AI</span>
+            </div>
           </div>
 
           {/* Example 2 */}
-          <div className="bg-white/5 border border-white/10 rounded-2xl p-8">
-            <p className="text-purple-400 font-semibold mb-4">
-              📌 Cold Outreach Email
-            </p>
+          <div className="relative bg-black/60 border border-white/10
+                          rounded-2xl p-10 backdrop-blur-xl">
 
-            <div className="text-sm text-gray-300 leading-relaxed">
-              <p className="text-purple-300 font-medium">
-                Subject: Quick question regarding your business
+            <span className="absolute -top-4 left-6 px-4 py-1
+                             text-[10px] tracking-widest
+                             bg-cyan-400/10 text-cyan-300
+                             border border-cyan-400/30 rounded-full">
+              COLD OUTREACH EMAIL
+            </span>
+
+            <div className="text-sm text-gray-300 leading-relaxed mt-6 space-y-4">
+              <p className="text-cyan-300 font-medium">
+                Subject: Exploring a potential collaboration
               </p>
 
-              <p className="mt-4">
-                Hi Sarah,
+              <p>
+                Hello Sarah,
                 <br /><br />
-                I came across your company and was impressed by the work you’re
-                doing in your industry.
+                I recently came across your organization and was impressed
+                by the work your team is doing within the industry.
                 <br /><br />
-                I wanted to reach out to see if you’d be open to a quick
-                conversation about how we might be able to support your current
-                goals.
+                I wanted to reach out to explore whether there might be an
+                opportunity to connect and discuss how we could support
+                your current objectives.
                 <br /><br />
-                If this sounds interesting, I’d love to connect at your
-                convenience.
+                If this aligns with your interests, I would be glad to connect
+                at a time convenient for you.
                 <br /><br />
-                Warm regards,  
+                Best regards,
                 <br />
                 Rahul
               </p>
+            </div>
+
+            <div className="mt-6 text-xs text-gray-500 flex justify-between">
+              <span>Status: Generated</span>
+              <span className="text-cyan-400">Serenedale AI</span>
             </div>
           </div>
         </div>
 
         {/* Why This Works */}
-        <div className="mt-24 grid md:grid-cols-3 gap-8 text-center">
-          
-          <div className="bg-white/5 p-6 rounded-xl">
-            <p className="text-2xl mb-2">🎯</p>
-            <h4 className="font-semibold mb-2">Clear Intent</h4>
+        <div className="mt-28 grid md:grid-cols-3 gap-10 text-center">
+
+          <div className="bg-black/50 border border-white/10 rounded-xl p-8">
+            <h4 className="font-semibold mb-3 text-white">
+              Intent-Driven Structure
+            </h4>
             <p className="text-sm text-gray-400">
-              Har email ka purpose clear hota hai — no confusion, no fluff.
+              Each email is structured around a clearly defined objective,
+              ensuring focused and effective communication.
             </p>
           </div>
 
-          <div className="bg-white/5 p-6 rounded-xl">
-            <p className="text-2xl mb-2">🧠</p>
-            <h4 className="font-semibold mb-2">Professional Tone</h4>
+          <div className="bg-black/50 border border-white/10 rounded-xl p-8">
+            <h4 className="font-semibold mb-3 text-white">
+              Professional Language Model
+            </h4>
             <p className="text-sm text-gray-400">
-              Perfect balance of polite, confident aur engaging language.
+              Tone and phrasing are dynamically adjusted to maintain
+              credibility, clarity, and confidence.
             </p>
           </div>
 
-          <div className="bg-white/5 p-6 rounded-xl">
-            <p className="text-2xl mb-2">📩</p>
-            <h4 className="font-semibold mb-2">Higher Reply Rate</h4>
+          <div className="bg-black/50 border border-white/10 rounded-xl p-8">
+            <h4 className="font-semibold mb-3 text-white">
+              Response-Optimized Output
+            </h4>
             <p className="text-sm text-gray-400">
-              Structured emails jo responses increase karne ke liye likhe gaye hain.
+              Messages are optimized to increase engagement
+              and improve reply probability.
             </p>
           </div>
         </div>
 
         {/* CTA */}
-        <div className="mt-24 text-center">
+        <div className="mt-32 text-center">
           <h4 className="text-3xl font-bold mb-4">
-            Want emails like these?
+            Generate Emails Like These — Instantly
           </h4>
-          <p className="text-gray-400 mb-8">
-            Bas apni details dalo aur AI ko likhne do.
+
+          <p className="text-gray-400 mb-10 max-w-xl mx-auto">
+            Input your intent and let the AI communication engine
+            handle the rest.
           </p>
-          <button className="px-10 py-4 rounded-xl bg-purple-600 hover:bg-purple-700 transition font-semibold text-lg">
-            Generate Your Email Now 🚀
+
+          <button
+            className="px-14 py-4 rounded-xl
+                       bg-gradient-to-r from-indigo-500 to-cyan-500
+                       text-sm font-semibold tracking-wide
+                       shadow-[0_0_40px_rgba(99,102,241,0.45)]
+                       hover:scale-105 transition-transform"
+          >
+            START AI GENERATION
           </button>
         </div>
 
