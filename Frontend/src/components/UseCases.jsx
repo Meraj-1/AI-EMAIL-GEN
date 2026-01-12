@@ -1,111 +1,141 @@
 const useCases = [
   {
     title: "Working Professionals",
-    emoji: "👨‍💼",
-    desc: "Daily professional emails, follow-ups, reports aur client communication ko fast aur effective banana."
+    role: "Daily Communication",
+    desc: "Handle routine professional emails, follow-ups, reports, and client communication with speed and precision."
   },
   {
     title: "Startup Founders",
-    emoji: "🚀",
-    desc: "Investors, partners aur customers ko clear, confident aur persuasive emails bhejne ke liye."
+    role: "Leadership & Outreach",
+    desc: "Craft confident investor updates, partnership proposals, and customer communication with clarity and authority."
   },
   {
     title: "Students & Job Seekers",
-    emoji: "🎓",
-    desc: "Job applications, internship emails, professors se communication — bina hesitation."
+    role: "Career Communication",
+    desc: "Generate impactful job applications, internship emails, and academic communication without hesitation."
   },
   {
     title: "HR & Recruitment Teams",
-    emoji: "🧑‍💼",
-    desc: "Hiring emails, interview calls, rejections aur follow-ups ko consistent aur professional rakhna."
+    role: "Hiring Operations",
+    desc: "Standardize interview invites, hiring updates, rejection emails, and follow-ups with a consistent professional tone."
   },
   {
     title: "Freelancers & Consultants",
-    emoji: "💼",
-    desc: "Clients ko pitch karna, proposals bhejna aur payments follow-up karna easily."
+    role: "Client Management",
+    desc: "Create proposals, client pitches, onboarding emails, and payment follow-ups with ease."
   },
   {
     title: "Sales & Marketing Teams",
-    emoji: "📈",
-    desc: "Cold outreach, lead follow-ups aur conversions badhane wale emails likhna."
+    role: "Revenue Growth",
+    desc: "Generate high-converting cold outreach, lead follow-ups, and persuasive sales emails at scale."
   },
 ];
 
 const UseCases = () => {
   return (
-    <section className="py-32 bg-gray-950 text-white">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="relative py-36 bg-[#05070f] text-white overflow-hidden">
+
+      {/* Subtle Grid */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:120px_120px]" />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
 
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-24">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Who Is This For? 👀
+        <div className="text-center max-w-3xl mx-auto mb-28">
+          <p className="text-xs tracking-[0.35em] text-cyan-400 mb-4">
+            AI USER PROFILES
+          </p>
+
+          <h2 className="text-4xl md:text-5xl font-extrabold mb-6
+                         bg-gradient-to-b from-white to-cyan-300
+                         bg-clip-text text-transparent">
+            Who Is This
+            <br />Built For?
           </h2>
-          <p className="text-gray-400 text-lg">
-            Chahe aap ek student ho, professional ho ya founder —
-            agar aap emails likhte ho, ye tool aapka kaam
-            faster, smarter aur better bana dega.
+
+          <p className="text-gray-400 text-lg leading-relaxed">
+            Serenedale AI is designed for individuals and teams
+            who rely on clear, effective, and professional email communication.
           </p>
         </div>
 
         {/* Cards */}
-        <div className="grid md:grid-cols-3 gap-10">
+        <div className="grid md:grid-cols-3 gap-12">
           {useCases.map((item) => (
             <div
               key={item.title}
-              className="bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition"
+              className="relative bg-black/60 border border-white/10
+                         rounded-2xl p-10 backdrop-blur-xl
+                         hover:border-cyan-400/40 transition"
             >
-              <div className="text-4xl mb-4">{item.emoji}</div>
-              <h3 className="text-2xl font-semibold mb-4">
+              <span className="text-[10px] tracking-widest text-cyan-400">
+                {item.role.toUpperCase()}
+              </span>
+
+              <h3 className="text-2xl font-semibold mt-4 mb-4">
                 {item.title}
               </h3>
-              <p className="text-gray-300 leading-relaxed">
+
+              <p className="text-gray-300 leading-relaxed text-sm">
                 {item.desc}
               </p>
             </div>
           ))}
         </div>
 
-        {/* Extra Benefits */}
-        <div className="mt-28 grid md:grid-cols-2 gap-14 items-center">
-          
+        {/* Benefits */}
+        <div className="mt-32 grid md:grid-cols-2 gap-16 items-center">
+
           <div>
-            <h3 className="text-3xl font-bold mb-6">
-              Why people love this tool ❤️
+            <h3 className="text-3xl font-bold mb-8">
+              Why Teams Choose This Platform
             </h3>
-            <ul className="space-y-4 text-gray-300">
-              <li>⚡ Saves hours every week</li>
-              <li>✍️ No writing skills required</li>
-              <li>🧠 Smart AI with context understanding</li>
-              <li>📩 Better replies & responses</li>
-              <li>🚀 Works for every email type</li>
+
+            <ul className="space-y-4 text-gray-300 text-sm">
+              <li>• Saves multiple hours every week</li>
+              <li>• No writing expertise required</li>
+              <li>• Context-aware language intelligence</li>
+              <li>• Improves response and engagement rates</li>
+              <li>• Adapts to any professional email scenario</li>
             </ul>
           </div>
 
-          <div className="bg-gradient-to-br from-purple-600/20 to-indigo-600/20 border border-purple-500/30 rounded-2xl p-10">
+          <div className="bg-black/60 border border-white/10 rounded-2xl p-12 backdrop-blur-xl">
             <h4 className="text-2xl font-semibold mb-4">
-              Not sure if it's for you?
+              Is this right for you?
             </h4>
-            <p className="text-gray-300 mb-6">
-              Agar aap emails likhte ho — chahe roz ya kabhi kabhi —
-              ye tool aapka kaam simple aur stress-free bana dega.
+
+            <p className="text-gray-300 mb-6 leading-relaxed">
+              If email communication plays any role in your work —
+              whether daily or occasionally — this platform
+              will significantly reduce effort and improve results.
             </p>
-            <p className="text-gray-200 font-medium">
-              Try it once. You’ll feel the difference.
+
+            <p className="text-cyan-400 font-medium">
+              Try once. Experience the difference.
             </p>
           </div>
         </div>
 
         {/* CTA */}
-        <div className="mt-28 text-center">
+        <div className="mt-32 text-center">
           <h4 className="text-3xl font-bold mb-4">
-            Ready to write better emails?
+            Activate AI-Powered Email Writing
           </h4>
-          <p className="text-gray-400 mb-8">
-            Join professionals, founders aur students jo already AI ka use kar rahe hain.
+
+          <p className="text-gray-400 mb-10 max-w-xl mx-auto">
+            Join professionals, founders, and teams already using
+            AI to communicate smarter.
           </p>
-          <button className="px-12 py-4 rounded-xl bg-purple-600 hover:bg-purple-700 transition font-semibold text-lg">
-            Start Using AI Now 🚀
+
+          <button
+            className="px-16 py-4 rounded-xl
+                       bg-gradient-to-r from-cyan-500 to-indigo-500
+                       text-sm font-semibold tracking-wide
+                       shadow-[0_0_40px_rgba(34,211,238,0.45)]
+                       hover:scale-105 transition-transform"
+          >
+            START USING AI
           </button>
         </div>
 
