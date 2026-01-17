@@ -1,95 +1,119 @@
 import React from "react";
+import { motion } from "framer-motion";
+import { FaStar, FaQuoteLeft } from "react-icons/fa";
+import { ShieldCheck, UserCheck } from "lucide-react";
 import testimonial from "../data/testimonial";
-import { FaStar } from "react-icons/fa";
 
-const Testimonial = () => {
+const Testimonials = () => {
   return (
-    <section className="relative bg-black py-32 px-6 md:px-16 overflow-hidden">
+    <section className="relative bg-[#02040a] py-32 px-6 overflow-hidden">
+      {/* BACKGROUND DECORATION */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(168,85,247,0.05),transparent_40%)]" />
 
-      {/* Background Glows */}
-      <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[600px] h-[600px]
-                      bg-purple-600/20 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute -bottom-40 right-1/3 w-[500px] h-[500px]
-                      bg-pink-500/10 rounded-full blur-3xl animate-pulse" />
+      {/* HEADER SECTION */}
+      <div className="relative z-10 max-w-4xl mx-auto text-center mb-20">
+        <motion.div 
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="flex items-center justify-center gap-2 text-cyan-400 text-[10px] font-bold tracking-[0.5em] uppercase mb-4"
+        >
+          <ShieldCheck size={14} /> Neural-Link Verification
+        </motion.div>
+        
+        <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter mb-6">
+          Validated by <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">Industry Leaders</span>
+        </h2>
+        <p className="text-gray-500 max-w-xl mx-auto font-light leading-relaxed">
+          High-fidelity communication logs from our global user network. 
+          99.4% confidence score across all professional sectors.
+        </p>
+      </div>
 
-      {/* Header */}
-      <h2 className="text-3xl md:text-4xl font-extrabold text-center
-                     bg-gradient-to-r from-purple-400 to-pink-500
-                     bg-clip-text text-transparent">
-        Trusted by Professionals Worldwide
-      </h2>
-
-      <p className="text-gray-400 text-center max-w-2xl mx-auto mt-4 mb-16 text-sm md:text-base">
-        Thousands of professionals rely on our AI to write better emails —
-        faster, smarter, and with confidence.
-      </p>
-
-      {/* Testimonial Grid */}
-      <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+      {/* MASONRY-STYLE GRID */}
+      <div className="max-w-7xl mx-auto columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
         {testimonial.map((t, index) => (
-          <div
+          <motion.div
             key={index}
-            className="relative group rounded-2xl overflow-hidden
-                       bg-white/5 backdrop-blur-xl border border-white/10
-                       hover:border-purple-500/40 hover:scale-[1.03] 
-                       transition-all duration-300 shadow-[0_0_40px_rgba(152,85,255,0.15)]"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.1 }}
+            className="break-inside-avoid relative group p-[1px] rounded-2xl bg-white/5 border border-white/10 hover:border-cyan-500/40 transition-all duration-500"
           >
-            {/* Top Neon Strip */}
-            <div className="h-1 bg-gradient-to-r from-purple-500 to-pink-500" />
+            {/* Card Content */}
+            <div className="relative bg-[#0b0f19]/80 backdrop-blur-3xl p-8 rounded-[15px] overflow-hidden">
+              {/* Subtle Quote Icon */}
+              <FaQuoteLeft className="absolute -top-2 -right-2 text-white/5 text-6xl group-hover:text-cyan-500/10 transition-colors" />
 
-            {/* Content */}
-            <div className="p-6 flex flex-col h-full">
-              {/* Avatar */}
-              <div className="flex justify-center -mt-12 mb-4">
-                <img
-                  src={t.image}
-                  alt={t.name}
-                  className="w-20 h-20 rounded-full object-cover
-                             border-4 border-black shadow-lg"
-                />
+              {/* User Header */}
+              <div className="flex items-center gap-4 mb-6">
+                <div className="relative">
+                  <img
+                    src={t.image}
+                    alt={t.name}
+                    className="w-14 h-14 rounded-lg object-cover grayscale group-hover:grayscale-0 transition-all duration-500 border border-white/10"
+                  />
+                  <div className="absolute -bottom-1 -right-1 bg-[#02040a] p-0.5 rounded-full">
+                    <UserCheck size={12} className="text-cyan-400" />
+                  </div>
+                </div>
+                <div>
+                  <h3 className="text-sm font-bold text-white tracking-wide uppercase">{t.name}</h3>
+                  <p className="text-[10px] text-cyan-500/70 font-mono tracking-wider">{t.role}</p>
+                </div>
               </div>
 
-              <h3 className="text-lg font-semibold text-center text-white">
-                {t.name}
-              </h3>
-              <p className="text-xs text-center text-gray-400 mb-3">
-                {t.role}
-              </p>
-
-              {/* Stars */}
-              <div className="flex justify-center gap-1 mb-4">
-                {[...Array(t.rating)].map((_, i) => (
-                  <FaStar key={i} className="text-yellow-400 text-sm" />
+              {/* Rating */}
+              <div className="flex gap-1 mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <FaStar key={i} className={`text-[10px] ${i < t.rating ? 'text-purple-500' : 'text-gray-800'}`} />
                 ))}
               </div>
 
-              {/* Testimonial */}
-              <p className="text-gray-300 text-sm leading-relaxed text-center">
-                “{t.testimonial}”
+              {/* Text */}
+              <p className="text-gray-400 text-sm leading-relaxed italic">
+                "{t.testimonial}"
               </p>
+
+              {/* Decorative "Data" footer */}
+              <div className="mt-6 pt-4 border-t border-white/5 flex justify-between items-center opacity-0 group-hover:opacity-100 transition-opacity">
+                <span className="text-[9px] font-mono text-gray-600">ID: NC-00{index + 102}</span>
+                <span className="text-[9px] font-mono text-cyan-600">VERIFIED_LOG</span>
+              </div>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
 
-      {/* CTA */}
-      <div className="mt-24 text-center">
-        <h4 className="text-3xl font-bold mb-4
-                       bg-gradient-to-r from-purple-400 to-pink-500
-                       bg-clip-text text-transparent">
-          Want results like these?
-        </h4>
-        <p className="text-gray-400 mb-8">
-          Join thousands of professionals using AI to write emails smarter and faster.
-        </p>
-        <button className="px-12 py-4 rounded-xl bg-purple-600 hover:bg-purple-700
-                           transition font-semibold text-lg shadow-lg">
-          Try AI Now 
-        </button>
+      {/* HIGH-CONVERSION CTA */}
+      <div className="relative mt-32 max-w-5xl mx-auto">
+        <div className="absolute inset-0 bg-cyan-500/5 blur-[120px] rounded-full" />
+        <div className="relative border border-white/10 bg-white/5 backdrop-blur-md rounded-3xl p-12 text-center overflow-hidden">
+          {/* Decorative Corner */}
+          <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-cyan-500/20 to-transparent rounded-bl-full" />
+          
+          <h4 className="text-3xl md:text-4xl font-black text-white mb-6">
+            Ready to Amplify Your <br />
+            <span className="text-cyan-400">Communication Output?</span>
+          </h4>
+          
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+            <button className="w-full sm:w-auto px-10 py-4 bg-white text-black font-black text-xs tracking-[0.2em] uppercase hover:bg-cyan-400 transition-all shadow-[0_0_30px_rgba(255,255,255,0.2)]">
+              Initialize Free Trial
+            </button>
+            <button className="w-full sm:w-auto px-10 py-4 border border-white/20 text-white font-black text-xs tracking-[0.2em] uppercase hover:bg-white/5 transition-all">
+              Schedule Architecture Call
+            </button>
+          </div>
+          
+          <p className="mt-8 text-[10px] text-gray-500 font-mono tracking-[0.2em] uppercase">
+            No credit card required // Secure API Access // 24/7 Support
+          </p>
+        </div>
       </div>
-
     </section>
   );
 };
 
-export default Testimonial;
+export default Testimonials;
