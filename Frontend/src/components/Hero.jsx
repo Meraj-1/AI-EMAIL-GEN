@@ -1,150 +1,170 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import assets from "../assets/assets";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronRight, Terminal, Zap, ShieldCheck, Activity } from "lucide-react";
 import Header from "./Header";
 import LightRays from "../animations/LightRays";
 
 const Hero = () => {
+  const [displayText, setDisplayText] = useState("");
+  const fullMessage = "Based on our objectives, I've identified a 42% increase in efficiency via our new neural integration. Shall we proceed?";
+
+  // Typing Effect Simulation
+  useEffect(() => {
+    let i = 0;
+    const interval = setInterval(() => {
+      setDisplayText(fullMessage.slice(0, i));
+      i++;
+      if (i > fullMessage.length) clearInterval(interval);
+    }, 30);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <section
-      className="relative min-h-screen w-full overflow-hidden bg-black"
-      style={{ backgroundImage: `url(${assets.herobg})` }}
-    >
-      {/* LIGHT RAYS */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
+    <section className="relative min-h-screen w-full overflow-hidden bg-[#02040a]">
+      {/* 1. ANIMATED BACKGROUND LAYER */}
+      <div className="absolute inset-0 z-0">
         <LightRays
           raysOrigin="top-center"
           raysColor="#22d3ee"
-          raysSpeed={0.6}
-          lightSpread={0.4}
-          rayLength={1}
+          raysSpeed={0.4}
+          lightSpread={0.5}
+          rayLength={1.2}
           followMouse
-          mouseInfluence={0.05}
-          noiseAmount={0.05}
-          distortion={0.02}
-          className="mix-blend-screen opacity-50"
+          mouseInfluence={0.03}
+          className="mix-blend-screen opacity-40"
         />
+        {/* Decorative Grid */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:60px_60px]"></div>
       </div>
 
-      {/* OVERLAY */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/70 to-black z-10" />
-
-      {/* NEON GLOWS */}
-      <div className="absolute -top-48 -left-48 w-[36rem] h-[36rem] bg-cyan-500/20 blur-[180px] z-10" />
-      <div className="absolute bottom-0 -right-48 w-[36rem] h-[36rem] bg-purple-600/20 blur-[180px] z-10" />
-
-      {/* HEADER */}
+      {/* 2. OVERLAYS & GLOWS */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#02040a]/0 via-[#02040a]/60 to-[#02040a] z-10" />
+      <div className="absolute top-1/4 -left-20 w-[40rem] h-[40rem] bg-cyan-500/10 blur-[150px] z-10 animate-pulse" />
+      
       <Header />
 
-      {/* CONTENT */}
-      <div className="relative z-30 flex min-h-screen items-center px-6 md:px-20">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-24 items-center">
-
-          {/* LEFT PANEL */}
-          <div className="space-y-10">
-
-            {/* SYSTEM BADGE */}
-            <div className="inline-flex items-center gap-3 px-4 py-2
-                            border border-cyan-500/30
-                            text-cyan-400 text-xs tracking-widest uppercase">
-              <span className="w-2 h-2 bg-cyan-400 animate-pulse" />
-              Neural Email Generation System
+      <div className="relative z-30 flex min-h-screen items-center px-8 md:px-20 pt-20">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          
+          {/* LEFT CONTENT: SYSTEM BOOTUP ANIMATION */}
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="space-y-8"
+          >
+            {/* BRAIN MODULE BADGE */}
+            <div className="inline-flex items-center gap-3 px-3 py-1 bg-cyan-950/30 border border-cyan-500/30 rounded-full text-cyan-400 text-[10px] font-bold tracking-[0.3em] uppercase">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+              </span>
+              Neural Core v2.0 Active
             </div>
 
-            {/* HEADLINE */}
-            <h1 className="text-5xl md:text-6xl font-extrabold leading-tight tracking-tight">
-              <span className="block text-white">
-                Emails that
-              </span>
-              <span className="block bg-gradient-to-r from-cyan-400 to-purple-500
-                               bg-clip-text text-transparent">
-                trigger responses
+            <h1 className="text-6xl md:text-7xl font-black leading-[1.1] tracking-tighter text-white">
+              Precision <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 animate-gradient-x">
+                Neural Messaging
               </span>
             </h1>
 
-            {/* DESCRIPTION */}
-            <p className="text-gray-300 max-w-xl text-base md:text-lg leading-relaxed">
-              Serenedale AI analyzes your intent, context, and tone to
-              <span className="text-white font-medium">
-                {" "}generate precise, persuasive email outputs
-              </span>.
-              <br />
-              No prompts. No guesswork.  
-              Just clean, human-like communication — powered by machines.
+            <p className="text-gray-400 max-w-lg text-lg leading-relaxed font-light">
+              Bypass the generic AI "fluff." Serenedale uses 
+              <span className="text-cyan-400 font-mono italic"> cognitive intent mapping </span> 
+              to draft emails that sound more like you than you do.
             </p>
 
-            {/* ACTIONS */}
-            <div className="flex flex-wrap items-center gap-4 pt-4">
-
+            {/* CTAS WITH HOVER EFFECTS */}
+            <div className="flex flex-wrap items-center gap-6 pt-4">
               <Link
-                to="/email-generator"
-                className="px-8 py-3 text-xs font-bold tracking-widest uppercase
-                           border border-cyan-400 text-cyan-400
-                           hover:bg-cyan-400 hover:text-black
-                           transition-all shadow-[0_0_40px_rgba(34,211,238,0.35)]"
+                to="/generator"
+                className="group relative px-10 py-4 bg-cyan-500 text-black font-black text-xs tracking-[0.2em] uppercase transition-all hover:scale-105 active:scale-95 shadow-[0_0_30px_rgba(34,211,238,0.4)]"
               >
-                Initialize System →
+                <div className="relative z-10 flex items-center gap-2">
+                  Initialize Neural Link <ChevronRight size={16} />
+                </div>
               </Link>
 
-              <button
-                className="px-8 py-3 text-xs font-semibold tracking-widest uppercase
-                           border border-white/30 text-white
-                           hover:bg-white/10 transition"
-              >
-                View Live Output
+              <button className="flex items-center gap-2 text-xs font-bold tracking-[0.2em] uppercase text-gray-400 hover:text-white transition-colors group">
+                <div className="w-10 h-10 border border-white/10 flex items-center justify-center group-hover:border-cyan-500 transition-colors">
+                  <Activity size={16} />
+                </div>
+                View System Specs
               </button>
             </div>
 
-            {/* SYSTEM STATS */}
-            <div className="flex flex-wrap gap-6 pt-6 text-xs text-gray-400 tracking-wider uppercase">
-              <span>⏱ Response Time: &lt; 5s</span>
-              <span>🔐 Data Retention: 0%</span>
-              <span>🧠 Model: Neural Core v1</span>
+            {/* LIVE SYSTEM TELEMETRY */}
+            <div className="grid grid-cols-3 gap-8 pt-10 border-t border-white/5">
+              {[
+                { label: "Latency", val: "1.2ms", icon: Zap },
+                { label: "Privacy", val: "AES-256", icon: ShieldCheck },
+                { label: "Throughput", val: "850/m", icon: Terminal },
+              ].map((stat, i) => (
+                <div key={i} className="space-y-1">
+                  <div className="flex items-center gap-2 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+                    <stat.icon size={12} className="text-cyan-600" /> {stat.label}
+                  </div>
+                  <div className="text-sm font-mono text-gray-200">{stat.val}</div>
+                </div>
+              ))}
             </div>
-          </div>
+          </motion.div>
 
-          {/* RIGHT TERMINAL CARD */}
-          <div className="hidden md:block">
-            <div
-              className="relative backdrop-blur-2xl bg-white/5
-                         border border-cyan-500/30 p-8
-                         shadow-[0_40px_90px_rgba(0,0,0,0.75)]"
-            >
-              {/* TERMINAL GLOW */}
-              <div className="absolute -top-6 -right-6 w-32 h-32
-                              bg-cyan-500/20 blur-3xl rounded-full" />
+          {/* RIGHT PANEL: INTERACTIVE TERMINAL */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9, rotateY: 10 }}
+            animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+            transition={{ duration: 1, delay: 0.2 }}
+            className="hidden lg:block relative group"
+          >
+            {/* Decorative Corner Brackets */}
+            <div className="absolute -top-4 -left-4 w-12 h-12 border-t-2 border-l-2 border-cyan-500/40" />
+            <div className="absolute -bottom-4 -right-4 w-12 h-12 border-b-2 border-r-2 border-purple-500/40" />
 
-              <div className="mb-4 text-xs tracking-widest text-cyan-400">
-                ▸ AI OUTPUT PREVIEW
+            <div className="relative overflow-hidden backdrop-blur-3xl bg-[#0b0f19]/80 border border-white/10 p-1 rounded-sm shadow-2xl">
+              {/* Terminal Header */}
+              <div className="flex items-center justify-between px-6 py-3 border-b border-white/5 bg-white/5">
+                <div className="flex gap-2">
+                  <div className="w-2.5 h-2.5 rounded-full bg-red-500/20 border border-red-500/50" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/20 border border-yellow-500/50" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-green-500/20 border border-green-500/50" />
+                </div>
+                <div className="text-[10px] font-mono text-gray-500 tracking-[0.2em]">CORE_OUTPUT_MODULE.sh</div>
               </div>
 
-              <div className="text-sm text-gray-200 leading-relaxed space-y-4 font-mono">
-                <p>
-                  <span className="text-purple-400">Subject:</span>{" "}
-                  Follow-up on integration discussion
-                </p>
-
-                <p>
-                  Hello John,
-                  <br /><br />
-                  This message is a follow-up regarding our recent conversation.
-                  Based on the discussed objectives, I believe there is strong
-                  alignment for collaboration.
-                </p>
-
-                <p>
-                  Awaiting your response.
+              {/* Terminal Content */}
+              <div className="p-8 space-y-6 font-mono text-sm leading-relaxed min-h-[320px]">
+                <div className="space-y-1">
+                  <span className="text-cyan-500/50 text-xs tracking-tighter">TO:</span>
+                  <span className="text-white ml-2">stakeholder_id_09</span>
+                </div>
+                <div className="space-y-1">
+                  <span className="text-purple-500/50 text-xs tracking-tighter">SUB:</span>
+                  <span className="text-cyan-100 ml-2">Integration Protocol Enhancement</span>
+                </div>
+                
+                <div className="pt-4 text-gray-300 border-t border-white/5">
+                  <span className="text-cyan-400">root@neural:~$</span> generate --tone=persuasive
                   <br />
-                  — Serenedale AI
-                </p>
+                  <p className="mt-4 text-white leading-loose">
+                    {displayText}
+                    <span className="inline-block w-2 h-4 bg-cyan-400 animate-pulse ml-1 align-middle" />
+                  </p>
+                </div>
               </div>
 
-              <div className="mt-6 flex justify-between text-[11px] text-gray-400 tracking-widest uppercase">
-                <span>Status: Generated</span>
-                <span className="text-cyan-400">Neural Engine Active</span>
+              {/* Terminal Footer */}
+              <div className="px-6 py-4 bg-cyan-500/5 flex justify-between items-center border-t border-white/5">
+                <div className="text-[10px] text-cyan-500/70 animate-pulse">● ENGINES RUNNING</div>
+                <div className="text-[10px] text-gray-500 uppercase tracking-widest">Confidence: 99.4%</div>
               </div>
             </div>
-          </div>
+
+            {/* Floating Background Element */}
+            <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-purple-600/20 blur-[60px] rounded-full z-[-1]" />
+          </motion.div>
 
         </div>
       </div>
